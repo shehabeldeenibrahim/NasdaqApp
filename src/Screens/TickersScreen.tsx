@@ -1,5 +1,8 @@
+import { SearchBar } from "@rneui/base";
 import React from "react";
-import { Button } from "react-native";
+import { View } from "react-native";
+import TickerList from "../Components/TickersList/TickersList";
+import { TickersData } from "../mocks/Tickers";
 
 interface Props {
   navigation: any;
@@ -10,14 +13,18 @@ interface Props {
  */
 const TickersScreen: React.FC<Props> = ({ navigation }) => {
   return (
-    <>
-      <Button
-        title="Go to DetailScreen"
-        onPress={() => {
-          navigation?.navigate("TickerDetails");
+    <View>
+      <SearchBar
+        placeholder="Search Ticker..."
+        platform="ios"
+        containerStyle={{
+          backgroundColor: "transparent",
         }}
-      ></Button>
-    </>
+        inputContainerStyle={{ backgroundColor: "white" }}
+        leftIconContainerStyle={{ backgroundColor: "white" }}
+      />
+      <TickerList data={TickersData} retrieveMore={() => {}} />
+    </View>
   );
 };
 export default TickersScreen;
