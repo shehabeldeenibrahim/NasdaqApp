@@ -22,3 +22,7 @@ export const getIconName = (market: string) => {
       return "o";
   }
 };
+
+export const createIconsLibrary = () => {
+  library.add(faArrowTrendUp, faDollarSign, faBitcoinSign, faO);
+};
