@@ -1,8 +1,11 @@
 import React from "react";
 import { useNavigation } from "@react-navigation/native";
 import { Avatar, ListItem, Text } from "@rneui/base";
-import { TouchableOpacity, View } from "react-native";
+import { TextStyle, TouchableOpacity, View } from "react-native";
 import { Ticker } from "../../models";
+import { getIconName, getInitials } from "../../utils";
+import { useTheme } from "@rneui/themed/dist/config";
+import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
 
 interface IProps {
   ticker: Ticker;
@@ -14,30 +17,33 @@ interface IProps {
 
 const Item = ({ ticker }: IProps) => {
   const navigation = useNavigation();
-  const stockColor = () => {
-    return Math.random() < 0.5 ? "green" : "red";
-  };
+  const { theme } = useTheme();
   return (
     <TouchableOpacity
       onPress={() => {
-        navigation?.navigate("TickerDetails", {});
+        navigation?.navigate("TickerDetails" as never);
       }}
     >
       <View>
         <ListItem containerStyle={styles.container}>
           <Avatar
             rounded
-            source={{ uri: ticker.logo ? ticker.logo : "none" }}
+            title={getInitials(ticker.ticker)}
+            containerStyle={{ backgroundColor: theme.colors.primary }}
           />
           <ListItem.Content>
             <ListItem.Title style={styles.title}>
               {ticker.ticker}
             </ListItem.Title>
-            <ListItem.Subtitle>{ticker.name}</ListItem.Subtitle>
+            <ListItem.Subtitle style={{ color: theme.colors.primary }}>
+              {ticker.name}
+            </ListItem.Subtitle>
           </ListItem.Content>
-          <Text h4 h4Style={{ color: stockColor() }}>
-            $776.9
-          </Text>
+          <FontAwesomeIcon
+            size={30}
+            color={theme.colors.primary}
+            icon={getIconName(ticker.market)}
+          />
           <ListItem.Chevron color="gray" />
         </ListItem>
       </View>
@@ -56,6 +62,6 @@ const styles = {
     shadowOpacity: 0.2,
     elevation: 1,
   },
-  title: { fontWeight: "bold" },
+  title: { fontWeight: "bold" } as TextStyle,
 };
 export default Item;
