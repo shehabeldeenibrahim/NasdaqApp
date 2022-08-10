@@ -1,10 +1,9 @@
 import React from "react";
-import { useNavigation } from "@react-navigation/native";
+import { useNavigation, useTheme } from "@react-navigation/native";
 import { Avatar, ListItem, Text } from "@rneui/base";
 import { TextStyle, TouchableOpacity, View } from "react-native";
 import { Ticker } from "../../models";
 import { getIconName, getInitials } from "../../utils";
-import { useTheme } from "@rneui/themed/dist/config";
 import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
 
 interface IProps {
@@ -17,7 +16,7 @@ interface IProps {
 
 const Item = ({ ticker }: IProps) => {
   const navigation = useNavigation();
-  const { theme } = useTheme();
+  const theme = useTheme();
   return (
     <TouchableOpacity
       onPress={() => {

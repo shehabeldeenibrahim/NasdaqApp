@@ -1,14 +1,10 @@
-import { CreateThemeOptions } from "@rneui/themed";
+import { DefaultTheme } from "@react-navigation/native";
 
-export const theme: CreateThemeOptions = {
-  lightColors: {
+export const colors = {
+  ...DefaultTheme.colors,
+  colors: {
     primary: "#2785d6",
     secondary: "#FFFFFF",
     background: "#eaf2fb",
   },
-  darkColors: {
-    primary: "black",
-    secondary: "black",
-  },
-  mode: "light",
 };

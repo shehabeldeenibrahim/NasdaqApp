@@ -1,24 +1,21 @@
-import { DarkTheme, DefaultTheme } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import React from "react";
-import { ColorSchemeName } from "react-native";
-import { NavigationContainer } from "@react-navigation/native";
+import { DefaultTheme, NavigationContainer } from "@react-navigation/native";
 import TickersScreen from "../Screens/TickersScreen";
 import TickerDetailsScreen from "../Screens/TickerDetailsScreen";
+import { colors } from "../theme";
 
 /**
  * Navigation configuration component
- * @param  colorScheme
+ * @param  none
  */
-export default function Navigation({
-  colorScheme,
-}: {
-  colorScheme: ColorSchemeName;
-}) {
+export default function Navigation({}) {
+  const MyTheme = {
+    ...DefaultTheme,
+    colors: colors,
+  };
   return (
-    <NavigationContainer
-      theme={colorScheme === "dark" ? DarkTheme : DefaultTheme}
-    >
+    <NavigationContainer theme={MyTheme}>
       <RootNavigator />
     </NavigationContainer>
   );
