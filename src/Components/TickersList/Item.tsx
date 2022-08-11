@@ -27,14 +27,14 @@ const Item = ({ ticker }: IProps) => {
         <ListItem containerStyle={styles.container}>
           <Avatar
             rounded
-            title={getInitials(ticker.ticker)}
+            title={getInitials(ticker.name)}
             containerStyle={{ backgroundColor: theme.colors.primary }}
           />
           <ListItem.Content>
             <ListItem.Title style={styles.title}>
               {ticker.ticker}
             </ListItem.Title>
-            <ListItem.Subtitle style={{ color: theme.colors.primary }}>
+            <ListItem.Subtitle style={{ color: theme.colors.gray }}>
               {ticker.name}
             </ListItem.Subtitle>
           </ListItem.Content>
