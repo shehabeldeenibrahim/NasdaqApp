@@ -1,10 +1,9 @@
-import { Divider } from "@rneui/themed";
 import React from "react";
 import { View } from "react-native";
 import InfoCard from "../Components/TickerDetails/InfoCard";
+import StatsGraph from "../Components/TickerDetails/StatsGraph";
 import { TickerDetailsData } from "../mocks/Tickers";
-import { Ticker } from "../models";
-import { colors } from "../theme";
+import { createData } from "../utils";
 
 interface IProps {
   navigation: any;
@@ -17,9 +16,9 @@ interface IProps {
 const TickerDetailsScreen: React.FC<IProps> = (props) => {
   return (
     <>
-      <View style={{ flex: 0.2, flexDirection: "column" }}>
+      <View>
         <InfoCard data={TickerDetailsData} />
-        <Divider style={{ marginHorizontal: "5%" }} color={colors?.primary} />
+        <StatsGraph data={createData()} />
       </View>
     </>
   );
