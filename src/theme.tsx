@@ -1,10 +1,13 @@
 import { DefaultTheme } from "@react-navigation/native";
 
 export const colors = {
-  ...DefaultTheme.colors,
-  colors: {
-    primary: "#2785d6",
-    secondary: "#FFFFFF",
-    background: "#eaf2fb",
-  },
+  primary: "#1A416E",
+  secondary: "#FFFFFF",
+  green: "#00DEB1",
+  lightGreen: "#95F088",
+  yellow: "#F9F871",
+  lightBlue: "#00A8E5",
+  lighter: "#00C6D6",
+  background: "#f7f7f7",
+  gray: "#80A2BF",
 };
