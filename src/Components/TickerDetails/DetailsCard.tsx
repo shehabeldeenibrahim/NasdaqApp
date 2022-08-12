@@ -6,7 +6,7 @@ import InfoTab from "./InfoTab";
 import StatsTab from "./StatsTab";
 import { TabView, SceneMap, TabBar } from "react-native-tab-view";
 import { getTabBarIcon } from "../../utils";
-import { stats } from "../../mocks/Tickers";
+import { stats, TickerDetailsData } from "../../mocks/Tickers";
 
 const DetailsCard = () => {
   const [index, setIndex] = React.useState(0);
@@ -17,7 +17,12 @@ const DetailsCard = () => {
       case "stats":
         return <StatsTab stats={stats} />;
       case "info":
-        return <InfoTab />;
+        return (
+          <InfoTab
+            description={TickerDetailsData.description}
+            website={TickerDetailsData.website}
+          />
+        );
       default:
         return null;
     }
