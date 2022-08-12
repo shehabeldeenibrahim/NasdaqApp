@@ -1,5 +1,6 @@
 import React from "react";
 import { View } from "react-native";
+import DetailsCard from "../Components/TickerDetails/DetailsCard";
 import InfoCard from "../Components/TickerDetails/InfoCard";
 import StatsGraph from "../Components/TickerDetails/StatsGraph";
 import { TickerDetailsData } from "../mocks/Tickers";
@@ -16,10 +17,9 @@ interface IProps {
 const TickerDetailsScreen: React.FC<IProps> = (props) => {
   return (
     <>
-      <View>
-        <InfoCard data={TickerDetailsData} />
-        <StatsGraph data={createData()} />
-      </View>
+      <InfoCard data={TickerDetailsData} />
+      <StatsGraph data={createData()} />
+      <DetailsCard />
     </>
   );
 };

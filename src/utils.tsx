@@ -3,6 +3,7 @@ import { faDollarSign } from "@fortawesome/free-solid-svg-icons/faDollarSign";
 import { faBitcoinSign } from "@fortawesome/free-solid-svg-icons/faBitcoinSign";
 import { faO } from "@fortawesome/free-solid-svg-icons/faO";
 import { library } from "@fortawesome/fontawesome-svg-core";
+import { Icon } from "@rneui/themed";
 
 export const getInitials = (name: string) => {
   if (!name.length) return "";
@@ -41,4 +42,27 @@ export const createData = () => {
     data[index] = getRandomFloat(150, 160, 2);
   }
   return data;
+};
+
+export const getTabBarIcon = (props: any) => {
+  const { route, focused } = props;
+  if (route.key === "stats") {
+    return (
+      <Icon
+        name={focused ? "stats-chart" : "stats-chart-outline"}
+        type="ionicon"
+        color="#517fa4"
+        size={20}
+      />
+    );
+  } else {
+    return (
+      <Icon
+        name={focused ? "information-circle" : "information-circle-outline"}
+        type="ionicon"
+        color="#517fa4"
+        size={20}
+      />
+    );
+  }
 };
