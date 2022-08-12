@@ -1,26 +1,29 @@
 import { Card, Divider } from "@rneui/base";
 import React from "react";
 import { View, StyleSheet } from "react-native";
+import { Stats } from "../../models";
 import StatsItem from "./StatsItem";
-
-const StatsTab = () => {
+interface IProps {
+  stats: Stats;
+}
+const StatsTab = ({ stats }: IProps) => {
   return (
     <Card containerStyle={styles.card}>
       <View style={styles.container}>
         <View style={styles.row}>
-          <StatsItem title="Open" value={34} />
+          <StatsItem title="Open" value={stats?.open} />
           <Divider orientation="vertical" />
-          <StatsItem title="Close" value={23} />
+          <StatsItem title="Close" value={stats?.close} />
         </View>
         <View style={styles.row}>
-          <StatsItem title="High" value={12} />
+          <StatsItem title="High" value={stats?.high} />
           <Divider orientation="vertical" />
-          <StatsItem title="Low" value={53} />
+          <StatsItem title="Low" value={stats?.low} />
         </View>
         <View style={styles.row}>
-          <StatsItem title="Volume" value={12} />
+          <StatsItem title="Volume" value={stats?.volume} />
           <Divider orientation="vertical" />
-          <StatsItem title="VWAP" value={12} />
+          <StatsItem title="VWAP" value={stats?.vwap} />
         </View>
       </View>
     </Card>

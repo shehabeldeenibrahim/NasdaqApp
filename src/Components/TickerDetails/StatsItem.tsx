@@ -5,7 +5,7 @@ import { colors } from "../../theme";
 
 interface IProps {
   title: string;
-  value: number;
+  value: number | null | undefined;
 }
 const StatsItem = ({ title, value }: IProps) => {
   return (

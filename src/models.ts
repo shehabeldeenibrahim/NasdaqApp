@@ -11,6 +11,7 @@ export type Stats = {
   high: number | null;
   low: number | null;
   volume: number | null;
+  vwap: number | null;
 } | null;
 export interface TickerDetails {
   name: string;
