@@ -1,7 +1,8 @@
-import { Text } from "@rneui/base";
+import { Text, Tooltip } from "@rneui/base";
 import { Icon } from "@rneui/themed";
-import React from "react";
+import React, { useState } from "react";
 import { View, StyleSheet } from "react-native";
+import { statsDefinitions } from "../../Constants";
 import { colors } from "../../theme";
 
 interface IProps {
@@ -9,10 +10,38 @@ interface IProps {
   value: number | null | undefined;
   currency: string | null;
 }
+
 const StatsItem = ({ title, value, currency }: IProps) => {
+  const [open, setOpen] = useState(false);
   return (
     <View style={styles.item}>
-      <Text style={styles.text}>{title}</Text>
+      <Text style={styles.text}>
+        {title}{" "}
+        <Tooltip
+          visible={open}
+          onOpen={() => {
+            setOpen(true);
+          }}
+          onClose={() => {
+            setOpen(false);
+          }}
+          popover={<Text>{statsDefinitions[title.toLowerCase()]}</Text>}
+          containerStyle={{
+            width: 200,
+            height: 100,
+            backgroundColor: colors.gray,
+          }}
+          withPointer={false}
+        >
+          <Icon
+            name="help-with-circle"
+            type="entypo"
+            size={13}
+            color={colors.gray}
+            style={{ paddingBottom: 4 }}
+          />
+        </Tooltip>
+      </Text>
       <Text>
         {value} {currency}
       </Text>
