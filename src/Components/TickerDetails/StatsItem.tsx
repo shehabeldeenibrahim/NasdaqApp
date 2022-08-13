@@ -1,4 +1,5 @@
-import { Card, TabView, Text } from "@rneui/base";
+import { Text } from "@rneui/base";
+import { Icon } from "@rneui/themed";
 import React from "react";
 import { View, StyleSheet } from "react-native";
 import { colors } from "../../theme";
@@ -6,12 +7,15 @@ import { colors } from "../../theme";
 interface IProps {
   title: string;
   value: number | null | undefined;
+  currency: string | null;
 }
-const StatsItem = ({ title, value }: IProps) => {
+const StatsItem = ({ title, value, currency }: IProps) => {
   return (
     <View style={styles.item}>
       <Text style={styles.text}>{title}</Text>
-      <Text>{value}</Text>
+      <Text>
+        {value} {currency}
+      </Text>
     </View>
   );
 };

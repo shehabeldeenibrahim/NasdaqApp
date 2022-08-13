@@ -11,19 +11,19 @@ const StatsTab = ({ stats }: IProps) => {
     <Card containerStyle={styles.card}>
       <View style={styles.container}>
         <View style={styles.row}>
-          <StatsItem title="Open" value={stats?.open} />
+          <StatsItem title="Open" value={stats?.open} currency={"USD"} />
           <Divider orientation="vertical" />
-          <StatsItem title="Close" value={stats?.close} />
+          <StatsItem title="Close" value={stats?.close} currency={"USD"} />
         </View>
         <View style={styles.row}>
-          <StatsItem title="High" value={stats?.high} />
+          <StatsItem title="High" value={stats?.high} currency={"USD"} />
           <Divider orientation="vertical" />
-          <StatsItem title="Low" value={stats?.low} />
+          <StatsItem title="Low" value={stats?.low} currency={"USD"} />
         </View>
         <View style={styles.row}>
-          <StatsItem title="Volume" value={stats?.volume} />
+          <StatsItem title="Volume" value={stats?.volume} currency={null} />
           <Divider orientation="vertical" />
-          <StatsItem title="VWAP" value={stats?.vwap} />
+          <StatsItem title="VWAP" value={stats?.vwap} currency={null} />
         </View>
       </View>
     </Card>
