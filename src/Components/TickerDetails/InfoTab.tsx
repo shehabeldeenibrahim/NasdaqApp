@@ -3,6 +3,7 @@ import { ScrollView, StyleSheet, View } from "react-native";
 import { colors } from "../../theme";
 import ViewMoreText from "react-native-view-more-text";
 import { Button } from "@rneui/themed";
+import * as Linking from "expo-linking";
 
 interface IProps {
   description: string | null;
@@ -41,6 +42,9 @@ const InfoTab = ({ description, website }: IProps) => {
           buttonStyle={styles.button}
           icon={{ name: "earth", type: "antdesign", color: "white" }}
           containerStyle={styles.buttonContainer}
+          onPress={() => {
+            Linking.openURL(website);
+          }}
         />
       ) : null}
     </ScrollView>
