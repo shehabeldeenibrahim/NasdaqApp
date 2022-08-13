@@ -59,7 +59,10 @@ const InfoTab = ({ description, website }: IProps) => {
 };
 export default InfoTab;
 const styles = StyleSheet.create({
-  container: { paddingHorizontal: "5%" },
+  container: {
+    paddingHorizontal: "5%",
+    marginBottom: "5%",
+  },
   description: {
     fontSize: 15,
     color: colors.darkGray,
@@ -74,11 +77,10 @@ const styles = StyleSheet.create({
     borderColor: "transparent",
     borderWidth: 0,
     borderRadius: 5,
-    paddingVertical: 5,
   },
   buttonContainer: {
     width: 200,
     alignSelf: "center",
-    top: "20%",
+    marginTop: "10%",
   },
 });
