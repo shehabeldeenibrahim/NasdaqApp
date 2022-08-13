@@ -29,6 +29,9 @@ const TickersScreen: React.FC<Props> = ({ navigation }) => {
       // TODO: show first list again
     }
   }, [debouncedSearch]);
+  useEffect(() => {
+    searchTickers("");
+  }, []);
   return (
     <View>
       <SearchBar
