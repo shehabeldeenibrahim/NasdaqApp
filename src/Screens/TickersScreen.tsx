@@ -1,8 +1,9 @@
 import { SearchBar } from "@rneui/base";
-import React from "react";
+import React, { useEffect } from "react";
 import { View } from "react-native";
 import TickerList from "../Components/TickersList/TickersList";
 import { TickersData } from "../mocks/Tickers";
+import { useActions, useAppState } from "../Overmind/helper";
 
 interface Props {
   navigation: any;
@@ -12,6 +13,12 @@ interface Props {
  * @param  none
  */
 const TickersScreen: React.FC<Props> = ({ navigation }) => {
+  const { searchTickers, retrieveMoreTickers } = useActions();
+  const { tickers } = useAppState();
+
+  useEffect(() => {
+    searchTickers("");
+  }, []);
   return (
     <View>
       <SearchBar
@@ -23,7 +30,7 @@ const TickersScreen: React.FC<Props> = ({ navigation }) => {
         inputContainerStyle={{ backgroundColor: "white" }}
         leftIconContainerStyle={{ backgroundColor: "white" }}
       />
-      <TickerList data={TickersData} retrieveMore={() => {}} />
+      <TickerList data={tickers} retrieveMore={retrieveMoreTickers} />
     </View>
   );
 };
