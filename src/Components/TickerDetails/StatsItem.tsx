@@ -53,7 +53,8 @@ const styles = StyleSheet.create({
   item: {
     padding: "3%",
     flexBasis: "50%",
-    alignItems: "center",
+    alignItems: "flex-start",
+    paddingHorizontal: "10%",
   },
   text: {
     fontSize: 20,
