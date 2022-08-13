@@ -17,9 +17,10 @@ interface IProps {
 const TickerDetailsScreen: React.FC<IProps> = (props) => {
   // Generate mock historical prices
   const historicalData: number[] = createData();
+  const length = historicalData.length;
   const percentageChange: number = getPercentageChange(
-    historicalData.at(-1),
-    historicalData.at(-2)
+    historicalData[length - 1],
+    historicalData[length - 2]
   );
 
   return (
