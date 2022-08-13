@@ -2,6 +2,7 @@ import { SearchBar } from "@rneui/base";
 import React, { useEffect, useState } from "react";
 import { View } from "react-native";
 import TickerList from "../Components/TickersList/TickersList";
+import useDebounce from "../hooks/useDebounce";
 import { TickersData } from "../mocks/Tickers";
 import { useActions, useAppState } from "../Overmind/helper";
 
@@ -16,13 +17,18 @@ const TickersScreen: React.FC<Props> = ({ navigation }) => {
   const { searchTickers, retrieveMoreTickers } = useActions();
   const { tickers } = useAppState();
   const [query, setQuery] = useState("");
+  const debouncedSearch = useDebounce(query, 500);
 
   const handleChange = (query: string) => {
     setQuery(query);
   };
   useEffect(() => {
-    searchTickers(query);
-  }, [query]);
+    // TODO: scroll to top when search called
+    if (debouncedSearch) searchTickers(debouncedSearch);
+    else {
+      // TODO: show first list again
+    }
+  }, [debouncedSearch]);
   return (
     <View>
       <SearchBar
