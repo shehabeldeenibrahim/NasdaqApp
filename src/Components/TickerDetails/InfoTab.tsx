@@ -1,9 +1,10 @@
 import { Text } from "@rneui/base";
-import { ScrollView, StyleSheet, View } from "react-native";
+import { Dimensions, ScrollView, StyleSheet, View } from "react-native";
 import { colors } from "../../theme";
 import ViewMoreText from "react-native-view-more-text";
 import { Button } from "@rneui/themed";
 import * as Linking from "expo-linking";
+import NoData from "../NoData";
 
 interface IProps {
   description: string | null;
@@ -26,16 +27,22 @@ const InfoTab = ({ description, website }: IProps) => {
   };
   return (
     <ScrollView style={styles.container}>
-      <Text h4 h4Style={styles.title}>
-        About
-      </Text>
-      <ViewMoreText
-        numberOfLines={website ? 6 : 14}
-        renderViewMore={renderViewMore}
-        renderViewLess={renderViewLess}
-      >
-        <Text style={styles.description}>{description}</Text>
-      </ViewMoreText>
+      {description ? (
+        <>
+          <Text h4 h4Style={styles.title}>
+            About
+          </Text>
+          <ViewMoreText
+            numberOfLines={website ? 6 : 14}
+            renderViewMore={renderViewMore}
+            renderViewLess={renderViewLess}
+          >
+            <Text style={styles.description}>{description}</Text>
+          </ViewMoreText>
+        </>
+      ) : (
+        <NoData />
+      )}
       {website ? (
         <Button
           title="Visit Website"

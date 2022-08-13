@@ -6,6 +6,7 @@ import {
   VictoryAxis,
 } from "victory-native";
 import { colors } from "../../theme";
+import NoData from "../NoData";
 /**
  * Graph showing stock prices for the last 30 days
  * @param {Object} data stock data for the last 30 days
@@ -16,7 +17,7 @@ interface IProps {
   percentageChange: number;
 }
 const StatsGraph = ({ data, percentageChange }: IProps) => {
-  return (
+  return data ? (
     <VictoryChart
       height={250}
       theme={VictoryTheme.material}
@@ -41,6 +42,8 @@ const StatsGraph = ({ data, percentageChange }: IProps) => {
         animate
       />
     </VictoryChart>
+  ) : (
+    <NoData />
   );
 };
 const styles = {
