@@ -1,6 +1,6 @@
 // Imports: Dependencies
 import React from "react";
-import { FlatList, View } from "react-native";
+import { FlatList, StyleSheet, View } from "react-native";
 import { Ticker } from "../../models";
 import Item from "./Item";
 interface IProps {
@@ -12,6 +12,7 @@ const TickerList = ({ data, retrieveMore }: IProps) => {
     <>
       {/* Our Ticker Flatlist */}
       <FlatList
+        style={styles.flatlist}
         // Data fetched
         data={data}
         // Render each item in data array
@@ -42,5 +43,7 @@ const TickerList = ({ data, retrieveMore }: IProps) => {
     </>
   );
 };
-
+const styles = StyleSheet.create({
+  flatlist: { marginBottom: "20%" },
+});
 export default TickerList;
