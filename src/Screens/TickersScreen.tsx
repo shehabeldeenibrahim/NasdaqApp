@@ -47,7 +47,7 @@ const TickersScreen: React.FC<Props> = ({ navigation }) => {
         onChangeText={handleChange}
         value={query}
       />
-      {tickers.length === 0 ? <Shimmer /> : null}
+      {tickers?.length === 0 ? <Shimmer /> : null}
       <TickerList data={tickers} retrieveMore={retrieveMoreTickers} />
     </View>
   );
