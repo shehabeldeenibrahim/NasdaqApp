@@ -11,8 +11,14 @@ export const getInitials = (name: string) => {
     ? `${name[0]}${name.split(" ").pop()?.charAt(0)}`
     : name[0];
 };
-export const getPercentageIncrease = (close: number, open: number) => {
-  return Math.round(close - open) / 100;
+export const getPercentageChange = (
+  closeToday: number | undefined,
+  closeYesterday: number | undefined
+) => {
+  if (!closeToday || !closeYesterday) return 0;
+  const percentageChange: number =
+    ((closeToday - closeYesterday) / closeYesterday) * 100;
+  return parseFloat(percentageChange.toFixed(2));
 };
 export const getIconName = (market: string) => {
   switch (market.toLowerCase()) {
@@ -33,7 +39,6 @@ export const createIconsLibrary = () => {
 
 const getRandomFloat = (min: number, max: number, decimals: number) => {
   const str = (Math.random() * (max - min) + min).toFixed(decimals);
-
   return parseFloat(str);
 };
 export const createData = () => {

@@ -3,17 +3,17 @@ import React from "react";
 import { StyleSheet, View } from "react-native";
 import { TickerDetails } from "../../models";
 import { colors } from "../../theme";
-import { getInitials, getPercentageIncrease } from "../../utils";
+import { getInitials } from "../../utils";
 
 interface IProps {
   data: TickerDetails;
+  percentageChange: number;
 }
 /**
  * Info header card showing ticker details
  * @param {data} TickerDetails ticker details to be displayed
  */
-const InfoCard = ({ data }: IProps) => {
-  const closePrice = getPercentageIncrease(data.stats?.close, data?.stats.open);
+const InfoCard = ({ data, percentageChange }: IProps) => {
   return (
     <Card containerStyle={styles.card}>
       <View style={{ flexDirection: "row" }}>
@@ -34,12 +34,12 @@ const InfoCard = ({ data }: IProps) => {
             <Text style={styles.currency}> {data.currency}</Text>
             <Text
               style={{
-                color: closePrice > 0 ? colors.green : "red",
+                color: percentageChange > 0 ? colors.green : "red",
                 fontSize: 15,
               }}
             >
               {" ("}
-              {closePrice} {"%)"}
+              {percentageChange} {"%)"}
             </Text>
           </Text>
         </View>

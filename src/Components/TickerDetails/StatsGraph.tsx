@@ -13,8 +13,9 @@ import { colors } from "../../theme";
 
 interface IProps {
   data: {};
+  percentageChange: number;
 }
-const StatsGraph = ({ data }: IProps) => {
+const StatsGraph = ({ data, percentageChange }: IProps) => {
   return (
     <VictoryChart
       height={250}
@@ -33,7 +34,7 @@ const StatsGraph = ({ data }: IProps) => {
       />
       <VictoryLine
         style={{
-          data: { stroke: colors.primary },
+          data: { stroke: percentageChange > 0 ? colors.green : "red" },
           parent: { border: "1px solid #ccc" },
         }}
         data={data}

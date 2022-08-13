@@ -1,10 +1,10 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { View } from "react-native";
 import DetailsCard from "../Components/TickerDetails/DetailsCard";
 import InfoCard from "../Components/TickerDetails/InfoCard";
 import StatsGraph from "../Components/TickerDetails/StatsGraph";
 import { TickerDetailsData } from "../mocks/Tickers";
-import { createData } from "../utils";
+import { createData, getPercentageChange } from "../utils";
 
 interface IProps {
   navigation: any;
@@ -15,10 +15,17 @@ interface IProps {
  * @param  none
  */
 const TickerDetailsScreen: React.FC<IProps> = (props) => {
+  // Generate mock historical prices
+  const historicalData: number[] = createData();
+  const percentageChange: number = getPercentageChange(
+    historicalData.at(-1),
+    historicalData.at(-2)
+  );
+
   return (
     <>
-      <InfoCard data={TickerDetailsData} />
-      <StatsGraph data={createData()} />
+      <InfoCard data={TickerDetailsData} percentageChange={percentageChange} />
+      <StatsGraph data={historicalData} percentageChange={percentageChange} />
       <DetailsCard />
     </>
   );
