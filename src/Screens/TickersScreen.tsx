@@ -15,7 +15,7 @@ interface Props {
  */
 const TickersScreen: React.FC<Props> = ({ navigation }) => {
   const { searchTickers, retrieveMoreTickers } = useActions();
-  const { tickers } = useAppState();
+  const { tickers, search_load } = useAppState();
   const [query, setQuery] = useState("");
   const debouncedSearch = useDebounce(query, 500);
 
@@ -35,6 +35,7 @@ const TickersScreen: React.FC<Props> = ({ navigation }) => {
   return (
     <View>
       <SearchBar
+        showLoading={search_load}
         placeholder="Search Ticker..."
         platform="ios"
         containerStyle={{

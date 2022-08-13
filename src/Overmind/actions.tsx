@@ -5,10 +5,11 @@ export const searchTickers = async (
   { state, effects }: Context,
   query: string
 ) => {
+  state.search_load = true;
   let result = await effects.api.searchTickers(TICKERS_URL, query);
-
   state.tickers = result?.result;
   state.next_url = result ? result.next_url : "";
+  state.search_load = false;
   console.log("search called");
 };
 export const retrieveMoreTickers = async ({ state, effects }: Context) => {
