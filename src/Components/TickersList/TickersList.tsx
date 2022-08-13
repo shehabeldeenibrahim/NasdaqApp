@@ -1,7 +1,9 @@
 // Imports: Dependencies
 import React from "react";
-import { FlatList, StyleSheet, View } from "react-native";
+import { ActivityIndicator, FlatList, StyleSheet, View } from "react-native";
 import { Ticker } from "../../models";
+import { colors } from "../../theme";
+import Loader from "../Loader";
 import Item from "./Item";
 interface IProps {
   data: Ticker[];
@@ -39,11 +41,12 @@ const TickerList = ({ data, retrieveMore }: IProps) => {
         initialNumToRender={20}
         maxToRenderPerBatch={20}
         windowSize={20}
+        ListFooterComponent={<Loader />}
       />
     </>
   );
 };
 const styles = StyleSheet.create({
-  flatlist: { marginBottom: "20%" },
+  flatlist: { marginBottom: "25%" },
 });
 export default TickerList;

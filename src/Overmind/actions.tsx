@@ -13,10 +13,10 @@ export const searchTickers = async (
   console.log("search called");
 };
 export const retrieveMoreTickers = async ({ state, effects }: Context) => {
+  state.retrieve_load = true;
   let result = await effects.api.searchTickers(state.next_url, "");
-
   state.tickers = [...state.tickers, ...result?.result];
   console.log("retrieve called");
-
+  state.retrieve_load = false;
   state.next_url = result ? result.next_url : "";
 };
