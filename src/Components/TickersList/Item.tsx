@@ -34,7 +34,10 @@ const Item = ({ ticker }: IProps) => {
             <ListItem.Title style={styles.title}>
               {ticker.ticker}
             </ListItem.Title>
-            <ListItem.Subtitle style={{ color: theme.colors.gray }}>
+            <ListItem.Subtitle
+              numberOfLines={1}
+              style={{ color: theme.colors.gray }}
+            >
               {ticker.name}
             </ListItem.Subtitle>
           </ListItem.Content>
