@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { View } from "react-native";
 import DetailsCard from "../Components/TickerDetails/DetailsCard";
+import DetailsShimmer from "../Components/TickerDetails/DetailsShimmer";
 import InfoCard from "../Components/TickerDetails/InfoCard";
 import StatsGraph from "../Components/TickerDetails/StatsGraph";
 import ListShimmer from "../Components/TickersList/ListShimmer";
@@ -36,7 +37,7 @@ const TickerDetailsScreen: React.FC<IProps> = (props) => {
       <DetailsCard data={details} />
     </>
   ) : (
-    <ListShimmer />
+    <DetailsShimmer />
   );
 };
 export default TickerDetailsScreen;
