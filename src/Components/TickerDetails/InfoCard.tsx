@@ -27,7 +27,9 @@ const InfoCard = ({ data }: IProps) => {
           <Text h4 h4Style={styles.title}>
             {data.ticker}
           </Text>
-          <Text style={styles.subtitle}>{data.name}</Text>
+          <Text numberOfLines={2} style={styles.subtitle}>
+            {data.name}
+          </Text>
 
           <Text h4 h4Style={styles.closePrice}>
             {data.stats ? data.stats.close?.toString() : "--"}
