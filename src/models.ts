@@ -24,3 +24,4 @@ export interface TickerDetails {
   description: string | null;
   currency: string;
 }
+export type Loading = "IDLE" | "LOADING" | "REFRESH";
