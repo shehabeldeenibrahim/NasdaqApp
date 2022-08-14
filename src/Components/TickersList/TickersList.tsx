@@ -10,6 +10,7 @@ interface IProps {
   retrieveMore: () => {};
 }
 const TickerList = ({ data, retrieveMore }: IProps) => {
+  var onEndReachedCalledDuringMomentum = true;
   return (
     <>
       {/* Our Ticker Flatlist */}
@@ -30,17 +31,21 @@ const TickerList = ({ data, retrieveMore }: IProps) => {
         // Extract item Key
         keyExtractor={(item, index) => String(index)}
         // On End Reached retrieves more data (LAZY LOADING)
+        onScrollBeginDrag={() => {
+          onEndReachedCalledDuringMomentum = false;
+        }}
         onEndReached={() => {
-          retrieveMore();
+          if (!onEndReachedCalledDuringMomentum) {
+            retrieveMore();
+            onEndReachedCalledDuringMomentum = true;
+          }
         }}
         // How Close To The End Of List Until Next Data Request Is Made
         onEndReachedThreshold={0.2}
         // Refreshing State Set To True When End Reached
         //   refreshing={refreshing}
         // Optimization attributes
-        initialNumToRender={20}
-        maxToRenderPerBatch={20}
-        windowSize={20}
+        initialNumToRender={10}
         ListFooterComponent={<Loader />}
       />
     </>

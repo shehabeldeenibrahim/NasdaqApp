@@ -23,10 +23,10 @@ export const api = {
       const response = await axios(url, {
         params: queryParams,
       }).catch((e: Error) => {
-        console.log(e.message);
+        throw new Error(e.message);
       });
-      const json = await response?.data.results;
-      const next_url = await response?.data.next_url;
+      const json = await response?.data?.results;
+      const next_url = await response?.data?.next_url;
       var result = json?.map((_ticker: any) => {
         const ticker: Ticker = {
           name: _ticker.name,
@@ -36,9 +36,9 @@ export const api = {
         return ticker;
       });
 
-      return { result: result, next_url: next_url };
+      return { result: result, next_url: next_url, error: null };
     } catch (error) {
-      console.log(error);
+      return { result: null, next_url: null, error: error };
     }
   },
   async getTickerDetails(ticker: string) {
