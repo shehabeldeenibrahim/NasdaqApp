@@ -25,7 +25,7 @@ const TickerDetailsScreen: React.FC<IProps> = (props) => {
   const { ticker } = props.route.params;
   const details: TickerDetails | null = tickerDetails[ticker];
   useEffect(() => {
-    if (!(ticker in tickerDetails)) getTickerDetails(ticker);
+    getTickerDetails(ticker);
   }, []);
   if (!details?.stats && !details?.historicalPrices && !details_load)
     return (
