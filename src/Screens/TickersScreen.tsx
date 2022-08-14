@@ -1,10 +1,9 @@
 import { SearchBar } from "@rneui/base";
 import React, { useEffect, useState } from "react";
 import { View } from "react-native";
-import Shimmer from "../Components/TickersList/Shimmer";
+import ListShimmer from "../Components/TickersList/ListShimmer";
 import TickerList from "../Components/TickersList/TickersList";
 import useDebounce from "../hooks/useDebounce";
-import { TickersData } from "../mocks/Tickers";
 import { useActions, useAppState } from "../Overmind/helper";
 
 interface Props {
@@ -47,7 +46,7 @@ const TickersScreen: React.FC<Props> = ({ navigation }) => {
         onChangeText={handleChange}
         value={query}
       />
-      {tickers?.length === 0 ? <Shimmer /> : null}
+      {tickers?.length === 0 ? <ListShimmer /> : null}
       <TickerList data={tickers} retrieveMore={retrieveMoreTickers} />
     </View>
   );

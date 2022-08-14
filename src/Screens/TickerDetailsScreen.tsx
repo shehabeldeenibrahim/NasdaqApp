@@ -3,6 +3,7 @@ import { View } from "react-native";
 import DetailsCard from "../Components/TickerDetails/DetailsCard";
 import InfoCard from "../Components/TickerDetails/InfoCard";
 import StatsGraph from "../Components/TickerDetails/StatsGraph";
+import ListShimmer from "../Components/TickersList/ListShimmer";
 import { TickerDetails } from "../models";
 import { useActions, useAppState } from "../Overmind/helper";
 import { createData, getPercentageChange } from "../utils";
@@ -25,7 +26,7 @@ const TickerDetailsScreen: React.FC<IProps> = (props) => {
     if (!(ticker in tickerDetails)) getTickerDetails(ticker);
   }, []);
 
-  return (
+  return details ? (
     <>
       <InfoCard data={details} />
       <StatsGraph
@@ -34,6 +35,8 @@ const TickerDetailsScreen: React.FC<IProps> = (props) => {
       />
       <DetailsCard data={details} />
     </>
+  ) : (
+    <ListShimmer />
   );
 };
 export default TickerDetailsScreen;
