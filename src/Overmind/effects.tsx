@@ -83,7 +83,7 @@ export const api = {
       const tickerDetails: TickerDetails | null = {
         name: detailsJson.name,
         ticker: ticker,
-        logo: detailsJson.branding?.logo_url ?? null,
+        logo: detailsJson.branding?.icon_url ?? null,
         stats: stats ?? null,
         website: detailsJson.homepage_url ?? null,
         industry: detailsJson.market ?? null,

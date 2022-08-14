@@ -1,6 +1,7 @@
 import { Avatar, Card, Divider, Text } from "@rneui/themed";
 import React from "react";
-import { StyleSheet, View } from "react-native";
+import { Image, StyleSheet, View } from "react-native";
+import { APIKEY } from "../../Constants";
 import { TickerDetails } from "../../models";
 import { colors } from "../../theme";
 import { getInitials } from "../../utils";
@@ -17,12 +18,22 @@ const InfoCard = ({ data }: IProps) => {
   return data ? (
     <Card containerStyle={styles.card}>
       <View style={{ flexDirection: "row" }}>
-        <Avatar
-          rounded
-          containerStyle={styles.logo}
-          size={65}
-          title={getInitials(data.name)}
-        />
+        {data?.logo ? (
+          <Image
+            style={styles.image}
+            source={{
+              uri: `${data?.logo}?apikey=${APIKEY}`,
+            }}
+            resizeMode="stretch"
+          />
+        ) : (
+          <Avatar
+            rounded
+            containerStyle={styles.logo}
+            size={65}
+            title={getInitials(data.name)}
+          />
+        )}
         <View style={styles.data}>
           <Text h4 h4Style={styles.title}>
             {data.ticker}
@@ -78,6 +89,13 @@ const styles = StyleSheet.create({
   currency: { color: "white", fontSize: 16, alignSelf: "flex-end" },
   subtitle: {
     color: colors.gray,
+  },
+  image: {
+    alignSelf: "center",
+    height: 65,
+    width: 65,
+    borderWidth: 1,
+    borderRadius: 75,
   },
 });
 
