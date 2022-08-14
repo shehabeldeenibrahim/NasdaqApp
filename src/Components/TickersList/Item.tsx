@@ -20,7 +20,9 @@ const Item = ({ ticker }: IProps) => {
   return (
     <TouchableOpacity
       onPress={() => {
-        navigation?.navigate("TickerDetails" as never);
+        navigation?.navigate("TickerDetails" as never, {
+          ticker: ticker.ticker,
+        });
       }}
     >
       <View>

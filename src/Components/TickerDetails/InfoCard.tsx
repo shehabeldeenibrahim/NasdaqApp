@@ -4,17 +4,17 @@ import { StyleSheet, View } from "react-native";
 import { TickerDetails } from "../../models";
 import { colors } from "../../theme";
 import { getInitials } from "../../utils";
+import Loader from "../Loader";
 
 interface IProps {
   data: TickerDetails;
-  percentageChange: number;
 }
 /**
  * Info header card showing ticker details
  * @param {data} TickerDetails ticker details to be displayed
  */
-const InfoCard = ({ data, percentageChange }: IProps) => {
-  return (
+const InfoCard = ({ data }: IProps) => {
+  return data ? (
     <Card containerStyle={styles.card}>
       <View style={{ flexDirection: "row" }}>
         <Avatar
@@ -34,17 +34,19 @@ const InfoCard = ({ data, percentageChange }: IProps) => {
             <Text style={styles.currency}> {data.currency}</Text>
             <Text
               style={{
-                color: percentageChange > 0 ? colors.green : "red",
+                color: data.percentageChange > 0 ? colors.green : "red",
                 fontSize: 15,
               }}
             >
               {" ("}
-              {percentageChange} {"%)"}
+              {data.percentageChange} {"%)"}
             </Text>
           </Text>
         </View>
       </View>
     </Card>
+  ) : (
+    <Loader />
   );
 };
 const styles = StyleSheet.create({

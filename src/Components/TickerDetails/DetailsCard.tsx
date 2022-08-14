@@ -6,22 +6,26 @@ import InfoTab from "./InfoTab";
 import StatsTab from "./StatsTab";
 import { TabView, SceneMap, TabBar } from "react-native-tab-view";
 import { getTabBarIcon } from "../../utils";
-import { stats, TickerDetailsData } from "../../mocks/Tickers";
+import { TickerDetails } from "../../models";
 
-const DetailsCard = () => {
+interface IProps {
+  data: TickerDetails;
+}
+/**
+ * Info header card showing ticker details
+ * @param {data} TickerDetails ticker details to be displayed
+ */
+const DetailsCard = ({ data }: IProps) => {
   const [index, setIndex] = React.useState(0);
   const totalWidth = Dimensions.get("screen").width;
 
   const renderScene = ({ route }) => {
     switch (route.key) {
       case "stats":
-        return <StatsTab stats={stats} />;
+        return <StatsTab stats={data.stats} />;
       case "info":
         return (
-          <InfoTab
-            description={TickerDetailsData.description}
-            website={TickerDetailsData.website}
-          />
+          <InfoTab description={data.description} website={data.website} />
         );
       default:
         return null;
@@ -33,7 +37,7 @@ const DetailsCard = () => {
     { key: "info", title: "Info" },
   ]);
 
-  return (
+  return data ? (
     <>
       <TabView
         navigationState={{ index, routes }}
@@ -56,6 +60,6 @@ const DetailsCard = () => {
         )}
       />
     </>
-  );
+  ) : null;
 };
 export default DetailsCard;

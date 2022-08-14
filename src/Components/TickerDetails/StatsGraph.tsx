@@ -9,11 +9,11 @@ import { colors } from "../../theme";
 import NoData from "../NoData";
 /**
  * Graph showing stock prices for the last 30 days
- * @param {Object} data stock data for the last 30 days
+ * @param {number[]} data stock data for the last 30 days
  */
 
 interface IProps {
-  data: {};
+  data: number[] | null;
   percentageChange: number;
 }
 const StatsGraph = ({ data, percentageChange }: IProps) => {
