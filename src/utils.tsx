@@ -9,9 +9,9 @@ import { PRICES_URL, TICKERS_URL } from "./Constants";
 
 export const getInitials = (name: string) => {
   if (!name.length) return "";
-  return name.length > 1
-    ? `${name[0]}${name.split(" ").pop()?.charAt(0)}`
-    : name[0];
+  let firstChar = name[0];
+  let lastChar = name.split(" ").pop()?.charAt(0);
+  return `${firstChar}${lastChar}`.toUpperCase();
 };
 export const getPercentageChange = (
   closeToday: number | undefined,
