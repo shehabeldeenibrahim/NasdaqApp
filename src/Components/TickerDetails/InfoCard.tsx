@@ -94,7 +94,8 @@ const styles = StyleSheet.create({
     alignSelf: "center",
     height: 65,
     width: 65,
-    borderWidth: 1,
+    borderWidth: 2,
+    borderColor: "white",
     borderRadius: 75,
   },
 });
