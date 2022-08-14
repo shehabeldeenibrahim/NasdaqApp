@@ -1,4 +1,5 @@
 import React from "react";
+import { Dimensions } from "react-native";
 import {
   VictoryChart,
   VictoryTheme,
@@ -16,12 +17,18 @@ interface IProps {
   data: number[] | null;
   percentageChange: number;
 }
+const { width, height } = Dimensions.get("window");
+
 const StatsGraph = ({ data, percentageChange }: IProps) => {
   return data && data.length > 1 ? (
     <VictoryChart
       height={250}
+      width={width + 25}
       theme={VictoryTheme.material}
       domainPadding={{ y: 15 }}
+      style={{
+        parent: { paddingRight: 500 },
+      }}
     >
       <VictoryAxis
         fixLabelOverlap
@@ -35,7 +42,7 @@ const StatsGraph = ({ data, percentageChange }: IProps) => {
         width={400}
         height={400}
         theme={VictoryTheme.material}
-        orientation="right"
+        // orientation="right"
         style={styles.yAxis}
       />
       <VictoryLine
