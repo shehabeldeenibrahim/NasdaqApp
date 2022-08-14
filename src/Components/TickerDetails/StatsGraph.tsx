@@ -17,7 +17,7 @@ interface IProps {
   percentageChange: number;
 }
 const StatsGraph = ({ data, percentageChange }: IProps) => {
-  return data ? (
+  return data && data.length > 2 ? (
     <VictoryChart
       height={250}
       theme={VictoryTheme.material}
