@@ -17,6 +17,8 @@ export interface TickerDetails {
   ticker: string;
   logo: string | null;
   stats: Stats | null;
+  historicalPrices: number[] | null;
+  percentageChange: number;
   website: string | null;
   industry: string;
   description: string | null;

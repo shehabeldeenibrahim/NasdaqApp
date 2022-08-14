@@ -4,6 +4,8 @@ import { faBitcoinSign } from "@fortawesome/free-solid-svg-icons/faBitcoinSign";
 import { faO } from "@fortawesome/free-solid-svg-icons/faO";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { Icon } from "@rneui/themed";
+import axios from "./axios";
+import { PRICES_URL, TICKERS_URL } from "./Constants";
 
 export const getInitials = (name: string) => {
   if (!name.length) return "";
@@ -70,4 +72,39 @@ export const getTabBarIcon = (props: any) => {
       />
     );
   }
+};
+
+export const getDetails = async (ticker: string) => {
+  const response = await axios(`${TICKERS_URL}/${ticker}`).catch((e) => {
+    console.log(e);
+  });
+  return response;
+};
+export const getPrices = async (ticker: string) => {
+  const todayDate: Date = new Date();
+  const endDate: string = formatDate(todayDate);
+  const startDate: string = formatDate(subtractMonths(1));
+  const url = `${PRICES_URL}/${ticker}/range/1/day/${startDate}/${endDate}`;
+  debugger;
+  const response = await axios(url).catch((e: Error) => {
+    console.log(e.message);
+  });
+  return response;
+};
+export const formatDate = (date: Date) => {
+  let d = new Date(date);
+  let month = (d.getMonth() + 1).toString();
+  let day = d.getDate().toString();
+  let year = d.getFullYear();
+  if (month.length < 2) {
+    month = "0" + month;
+  }
+  if (day.length < 2) {
+    day = "0" + day;
+  }
+  return [year, month, day].join("-");
+};
+const subtractMonths = (numOfMonths: number, date = new Date()) => {
+  date.setMonth(date.getMonth() - numOfMonths);
+  return date;
 };

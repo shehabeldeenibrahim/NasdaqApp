@@ -1,4 +1,5 @@
 import { TICKERS_URL } from "../Constants";
+import { TickerDetails } from "../models";
 import { Context } from "./helper";
 
 export const searchTickers = async (
@@ -19,4 +20,15 @@ export const retrieveMoreTickers = async ({ state, effects }: Context) => {
   console.log("retrieve called");
   state.retrieve_load = false;
   state.next_url = result ? result.next_url : "";
+};
+export const getTickerDetails = async (
+  { state, effects }: Context,
+  ticker: string
+) => {
+  const result: TickerDetails | null = await effects.api.getTickerDetails(
+    ticker
+  );
+
+  state.tickerDetails[ticker] = result;
+  console.log("get ticker details called");
 };
