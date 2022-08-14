@@ -16,15 +16,14 @@ export const searchTickers = async (
   state.search_load = false;
 };
 export const retrieveMoreTickers = async ({ state, effects }: Context) => {
-  console.log("retrieve called");
   if (!state.next_url) return;
-  state.retrieve_load = true;
+  state.retrieve_load?.send("FETCH");
   let result = await effects.api.searchTickers(state.next_url, "");
   if (!result.error && result.result) {
     state.tickers = [...state.tickers, ...result?.result];
     state.next_url = result ? result.next_url : "";
   }
-  state.retrieve_load = false;
+  // await state.retrieve_load.send("SUCCESS");
 };
 export const getTickerDetails = async (
   { state, effects }: Context,
