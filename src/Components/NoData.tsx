@@ -5,15 +5,22 @@ import { View, Image, StyleSheet, Dimensions } from "react-native";
 import { colors } from "../theme";
 
 // Screen Dimensions
-const { width } = Dimensions.get("window");
-
+const { height } = Dimensions.get("window");
+interface IProps {
+  center?: boolean;
+}
 /**
  * Component rendered when no data is retrieved
- * @param  none
+ * @param {boolean} center  controls the svg's position
  */
-const NoData = () => {
+const NoData = ({ center }: IProps) => {
   return (
-    <View style={styles.container}>
+    <View
+      style={{
+        ...styles.container,
+        paddingVertical: center ? height / 5 : height / 12,
+      }}
+    >
       <Image
         source={require("../../assets/nodata.webp")}
         style={styles.noDataImage}
@@ -29,7 +36,6 @@ export default NoData;
 // Styles
 const styles = StyleSheet.create({
   container: {
-    paddingVertical: width / 7,
     alignItems: "center",
   },
   text: { color: colors.primary },

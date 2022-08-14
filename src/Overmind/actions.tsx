@@ -25,10 +25,12 @@ export const getTickerDetails = async (
   { state, effects }: Context,
   ticker: string
 ) => {
+  state.details_load = true;
   const result: TickerDetails | null = await effects.api.getTickerDetails(
     ticker
   );
 
   state.tickerDetails[ticker] = result;
   console.log("get ticker details called");
+  state.details_load = false;
 };

@@ -30,7 +30,7 @@ const InfoCard = ({ data }: IProps) => {
           <Text style={styles.subtitle}>{data.name}</Text>
 
           <Text h4 h4Style={styles.closePrice}>
-            {data.stats?.close?.toString()}
+            {data.stats ? data.stats.close?.toString() : "--"}
             <Text style={styles.currency}> {data.currency}</Text>
             <Text
               style={{
