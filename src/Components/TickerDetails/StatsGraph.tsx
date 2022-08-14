@@ -17,13 +17,18 @@ interface IProps {
   percentageChange: number;
 }
 const StatsGraph = ({ data, percentageChange }: IProps) => {
-  return data && data.length > 2 ? (
+  return data && data.length > 1 ? (
     <VictoryChart
       height={250}
       theme={VictoryTheme.material}
       domainPadding={{ y: 15 }}
     >
-      <VictoryAxis crossAxis standalone={false} style={styles.xAxis} />
+      <VictoryAxis
+        fixLabelOverlap
+        crossAxis
+        standalone={false}
+        style={styles.xAxis}
+      />
       <VictoryAxis
         dependentAxis
         crossAxis

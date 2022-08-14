@@ -1,6 +1,12 @@
 import axios from "../axios";
 import { Stats, Ticker, TickerDetails } from "../Models";
-import { getDetails, getPercentageChange, getPrices } from "../utils";
+import {
+  formatDate,
+  formatDateShort,
+  getDetails,
+  getPercentageChange,
+  getPrices,
+} from "../utils";
 
 export const api = {
   async searchTickers(url: string, query: string) {
@@ -69,12 +75,14 @@ export const api = {
         };
         // map array of stats to array of closing prices
         historicalPrices = pricesArray.map((stats: any) => {
-          return stats.c;
+          let date = formatDateShort(new Date(stats.t));
+          let obj = { x: date, y: stats.c };
+          return obj;
         });
         if (pricesArrayLength > 1)
           percentageChange = getPercentageChange(
-            historicalPrices[pricesArrayLength - 1],
-            historicalPrices[pricesArrayLength - 2]
+            historicalPrices[pricesArrayLength - 1].y,
+            historicalPrices[pricesArrayLength - 2].y
           );
       }
 
