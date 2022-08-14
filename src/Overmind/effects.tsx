@@ -27,7 +27,7 @@ export const api = {
       });
       const json = await response?.data.results;
       const next_url = await response?.data.next_url;
-      var result = json.map((_ticker: any) => {
+      var result = json?.map((_ticker: any) => {
         const ticker: Ticker = {
           name: _ticker.name,
           ticker: _ticker.ticker,

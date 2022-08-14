@@ -32,7 +32,7 @@ const TickerDetailsScreen: React.FC<IProps> = (props) => {
       <>
         <InfoCard data={details} />
         <NoData center />
-        {details.description && <DetailsCard data={details} />}
+        {details?.description && <DetailsCard data={details} />}
       </>
     );
   return details ? (
