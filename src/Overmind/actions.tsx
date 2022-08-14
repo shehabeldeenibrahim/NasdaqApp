@@ -6,19 +6,21 @@ export const searchTickers = async (
   { state, effects }: Context,
   query: string
 ) => {
+  console.log("search called");
   state.search_load = true;
   let result = await effects.api.searchTickers(TICKERS_URL, query);
-  state.tickers = result?.result;
-  state.next_url = result ? result.next_url : "";
+  if (!result.error && result.result) {
+    state.tickers = result?.result;
+    state.next_url = result ? result.next_url : "";
+  }
   state.search_load = false;
-  console.log("search called");
 };
 export const retrieveMoreTickers = async ({ state, effects }: Context) => {
   console.log("retrieve called");
   if (!state.next_url) return;
   state.retrieve_load = true;
   let result = await effects.api.searchTickers(state.next_url, "");
-  if (!result.error) {
+  if (!result.error && result.result) {
     state.tickers = [...state.tickers, ...result?.result];
     state.next_url = result ? result.next_url : "";
   }
@@ -28,12 +30,11 @@ export const getTickerDetails = async (
   { state, effects }: Context,
   ticker: string
 ) => {
-  state.details_load = true;
-  const result: TickerDetails | null = await effects.api.getTickerDetails(
-    ticker
-  );
-
-  state.tickerDetails[ticker] = result;
   console.log("get ticker details called");
+  state.details_load = true;
+  const result = await effects.api.getTickerDetails(ticker);
+  if (!result.error && result.result) {
+    state.tickerDetails[ticker] = result.result;
+  }
   state.details_load = false;
 };

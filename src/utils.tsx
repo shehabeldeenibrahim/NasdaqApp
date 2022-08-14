@@ -8,7 +8,7 @@ import axios from "./axios";
 import { PRICES_URL, TICKERS_URL } from "./Constants";
 
 export const getInitials = (name: string) => {
-  if (!name.length) return "";
+  if (!name?.length) return "";
   let firstChar = name[0];
   let lastChar = name.split(" ").pop()?.charAt(0);
   return `${firstChar}${lastChar}`.toUpperCase();
@@ -75,9 +75,7 @@ export const getTabBarIcon = (props: any) => {
 };
 
 export const getDetails = async (ticker: string) => {
-  const response = await axios(`${TICKERS_URL}/${ticker}`).catch((e) => {
-    console.log(e);
-  });
+  const response = await axios(`${TICKERS_URL}/${ticker}`);
   return response;
 };
 export const getPrices = async (ticker: string) => {
@@ -85,10 +83,7 @@ export const getPrices = async (ticker: string) => {
   const endDate: string = formatDate(todayDate);
   const startDate: string = formatDate(subtractMonths(1));
   const url = `${PRICES_URL}/${ticker}/range/1/day/${startDate}/${endDate}`;
-  debugger;
-  const response = await axios(url).catch((e: Error) => {
-    console.log(e.message);
-  });
+  const response = await axios(url);
   return response;
 };
 export const formatDate = (date: Date) => {

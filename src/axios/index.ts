@@ -14,4 +14,5 @@ customAxios.interceptors.request.use(
     return Promise.reject(error);
   }
 );
+export const isAxiosError = axios.isAxiosError;
 export default customAxios;

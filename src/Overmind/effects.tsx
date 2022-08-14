@@ -1,7 +1,6 @@
-import axios from "../axios";
+import axios, { isAxiosError } from "../axios";
 import { Stats, Ticker, TickerDetails } from "../Models";
 import {
-  formatDate,
   formatDateShort,
   getDetails,
   getPercentageChange,
@@ -11,8 +10,6 @@ import {
 export const api = {
   async searchTickers(url: string, query: string) {
     try {
-      // TODO: add retry to handle 429 errors,
-      // see: https://stackoverflow.com/questions/56074531/how-to-retry-5xx-requests-using-axios
       const queryParams = {
         search: query,
         active: true,
@@ -22,8 +19,6 @@ export const api = {
       };
       const response = await axios(url, {
         params: queryParams,
-      }).catch((e: Error) => {
-        throw new Error(e.message);
       });
       const json = await response?.data?.results;
       const next_url = await response?.data?.next_url;
@@ -38,22 +33,21 @@ export const api = {
 
       return { result: result, next_url: next_url, error: null };
     } catch (error) {
-      return { result: null, next_url: null, error: error };
+      const errorMessage = isAxiosError(error)
+        ? error.response?.data?.error
+        : error.message;
+      alert(errorMessage);
+      return { result: null, next_url: null, error: errorMessage };
     }
   },
   async getTickerDetails(ticker: string) {
     try {
-      // TODO: add retry to handle 429 errors,
-      // see: https://stackoverflow.com/questions/56074531/how-to-retry-5xx-requests-using-axios
-      // AAAID ticker returning null
-
       let [details, prices] = await Promise.all([
         getDetails(ticker),
         getPrices(ticker),
       ]);
 
       const detailsJson = await details?.data.results;
-      debugger;
       var pricesArray: any[];
       var historicalPrices: any[] | null = null;
       var percentageChange: number = 0;
@@ -86,7 +80,7 @@ export const api = {
           );
       }
 
-      const tickerDetails: TickerDetails = {
+      const tickerDetails: TickerDetails | null = {
         name: detailsJson.name,
         ticker: ticker,
         logo: detailsJson.branding?.logo_url ?? null,
@@ -99,10 +93,13 @@ export const api = {
         percentageChange: percentageChange ?? null,
       };
 
-      return tickerDetails;
+      return { result: tickerDetails, error: null };
     } catch (error) {
-      console.log(error);
-      return null;
+      const errorMessage = isAxiosError(error)
+        ? error.response?.data?.error
+        : error.message;
+      alert(errorMessage);
+      return { result: null, error: error };
     }
   },
 };
