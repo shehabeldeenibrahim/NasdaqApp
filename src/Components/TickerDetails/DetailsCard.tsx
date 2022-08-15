@@ -59,6 +59,7 @@ const DetailsCard = ({ data }: IProps) => {
         renderTabBar={(props) => (
           <TabBar
             {...props}
+            pressColor="transparent"
             indicatorStyle={{
               backgroundColor: colors.primary,
               height: 2,
