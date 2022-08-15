@@ -7,6 +7,7 @@ import { getIconName, getInitials } from "../../utils";
 import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import { colors } from "../../theme";
+import OTCIcon from "../OTCIcon";
 
 interface IProps {
   ticker: Ticker;
@@ -49,12 +50,17 @@ const Item = ({ ticker }: IProps) => {
             </ListItem.Subtitle>
           </ListItem.Content>
           {/* Market Icon */}
-          <FontAwesomeIcon
-            testID="icon-test"
-            size={30}
-            color={colors.primary}
-            icon={getIconName(ticker.market)}
-          />
+          {ticker.market === "otc" ? (
+            <OTCIcon />
+          ) : (
+            <FontAwesomeIcon
+              testID="icon-test"
+              size={30}
+              color={colors.primary}
+              icon={getIconName(ticker.market)}
+            />
+          )}
+
           <ListItem.Chevron color="gray" />
         </ListItem>
       </View>
