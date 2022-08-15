@@ -49,7 +49,7 @@ const styles = StyleSheet.create({
     shadowColor: "#470000",
     shadowOffset: { width: 0, height: 1 },
     shadowOpacity: 0.1,
-    elevation: 1,
+    elevation: 3,
   },
 });
 export default StatsTab;
