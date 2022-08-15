@@ -1,20 +1,20 @@
 import { Icon } from "@rneui/themed";
 import React from "react";
 import { ActivityIndicator } from "react-native";
-import { useAppState } from "../Overmind/helper";
+import { Loading } from "../models";
 import { colors } from "../theme";
 interface IProps {
   retrieveMore?: () => {};
+  retrieveLoad: Loading;
 }
-const Loader = ({ retrieveMore }: IProps) => {
-  const { retrieve_load } = useAppState();
-  return retrieve_load === "LOADING" ? (
+const Loader = ({ retrieveMore, retrieveLoad }: IProps) => {
+  return retrieveLoad === "LOADING" ? (
     <ActivityIndicator
       testID="activity-indicator"
       size="small"
       color={colors.primary}
     />
-  ) : retrieve_load === "REFRESH" ? (
+  ) : retrieveLoad === "REFRESH" ? (
     <Icon
       name="reload"
       type="ionicon"

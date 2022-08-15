@@ -20,7 +20,7 @@ const TickersScreen: React.FC<Props> = ({ navigation }) => {
     retrieveMoreTickers,
     retrieveMoreSearchTickers,
   } = useActions();
-  const { tickers, search_load, search_tickers } = useAppState();
+  const { tickers, search_load, search_tickers, retrieve_load } = useAppState();
   const [query, setQuery] = useState("");
   const debouncedSearch = useDebounce(query, 500);
   const [isSearch, setIsSearch] = useState(false);
@@ -60,6 +60,7 @@ const TickersScreen: React.FC<Props> = ({ navigation }) => {
         retrieveMore={
           isSearch ? retrieveMoreSearchTickers : retrieveMoreTickers
         }
+        retrieve_load={retrieve_load}
       />
     </View>
   );

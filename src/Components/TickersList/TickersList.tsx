@@ -1,20 +1,29 @@
 // Imports: Dependencies
 import React from "react";
 import { FlatList, StyleSheet, View } from "react-native";
-import { Ticker } from "../../models";
+import { Loading, Ticker } from "../../models";
 import Loader from "../Loader";
 import Item from "./Item";
 interface IProps {
   data: Ticker[];
   retrieveMore: () => {};
+  retrieve_load: Loading;
+  test?: boolean;
 }
-const TickerList = ({ data, retrieveMore }: IProps) => {
-  var onEndReachedCalledDuringMomentum = true;
+const TickerList = ({
+  data,
+  retrieveMore,
+  retrieve_load,
+  test = false,
+}: IProps) => {
+  var onEndReachedCalledDuringMomentum = test ? false : true;
   return (
     <>
       {/* Our Ticker Flatlist */}
       <FlatList
         style={styles.flatlist}
+        // Test id
+        testID="tickers-list"
         // Data fetched
         data={data}
         // Render each item in data array
@@ -41,11 +50,12 @@ const TickerList = ({ data, retrieveMore }: IProps) => {
         }}
         // How Close To The End Of List Until Next Data Request Is Made
         onEndReachedThreshold={0.2}
-        // Refreshing State Set To True When End Reached
-        //   refreshing={refreshing}
         // Optimization attributes
         initialNumToRender={10}
-        ListFooterComponent={<Loader retrieveMore={retrieveMore} />}
+        // Loader on retriveMore
+        ListFooterComponent={
+          <Loader retrieveMore={retrieveMore} retrieveLoad={retrieve_load} />
+        }
       />
     </>
   );

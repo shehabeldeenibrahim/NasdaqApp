@@ -59,7 +59,7 @@ const InfoCard = ({ data }: IProps) => {
       </View>
     </Card>
   ) : (
-    <Loader />
+    <Loader retrieveLoad="LOADING" />
   );
 };
 const styles = StyleSheet.create({
