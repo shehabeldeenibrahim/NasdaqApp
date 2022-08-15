@@ -8,7 +8,7 @@ export interface State {
   search_load: boolean;
   retrieve_load: Loading;
   details_load: boolean;
-  tickerDetails: {
+  ticker_details: {
     [key: string]: TickerDetails;
   };
 }
@@ -22,5 +22,5 @@ export const state: State = {
   search_load: false,
   retrieve_load: "IDLE",
   details_load: false,
-  tickerDetails: {},
+  ticker_details: {},
 };

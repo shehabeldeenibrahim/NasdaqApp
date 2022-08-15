@@ -32,6 +32,7 @@ function RootNavigator() {
         headerTitleStyle: { color: "white" },
         headerTitleAlign: "center",
         headerTintColor: "white",
+        contentStyle: { borderRadius: 90 },
       }}
     >
       <Stack.Screen

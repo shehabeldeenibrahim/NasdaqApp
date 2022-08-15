@@ -57,12 +57,12 @@ export const getTickerDetails = async (
   { state, effects }: Context,
   ticker: string
 ) => {
-  if (ticker in state.tickerDetails) return state.tickerDetails[ticker];
+  if (ticker in state.ticker_details) return state.ticker_details[ticker];
   console.log("get ticker details called");
   state.details_load = true;
   const result = await effects.api.getTickerDetails(ticker);
   if (!result.error && result.result) {
-    state.tickerDetails[ticker] = result.result;
+    state.ticker_details[ticker] = result.result;
   }
   state.details_load = false;
 };

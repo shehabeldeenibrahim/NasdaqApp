@@ -19,9 +19,9 @@ interface IProps {
  */
 const TickerDetailsScreen: React.FC<IProps> = (props) => {
   const { getTickerDetails } = useActions();
-  const { tickerDetails, details_load } = useAppState();
+  const { ticker_details, details_load } = useAppState();
   const { ticker } = props.route.params;
-  const details: TickerDetails | null = tickerDetails[ticker];
+  const details: TickerDetails | null = ticker_details[ticker];
   useEffect(() => {
     props.navigation.setOptions({
       title: ticker,
