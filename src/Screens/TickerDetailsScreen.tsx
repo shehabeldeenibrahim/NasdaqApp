@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { ScrollView } from "react-native";
 import NoData from "../Components/NoData";
 import DetailsCard from "../Components/TickerDetails/DetailsCard";
 import DetailsShimmer from "../Components/TickerDetails/DetailsShimmer";
@@ -36,14 +37,14 @@ const TickerDetailsScreen: React.FC<IProps> = (props) => {
       </>
     );
   return details ? (
-    <>
+    <ScrollView>
       <InfoCard data={details} />
       <StatsGraph
         data={details?.historicalPrices}
         percentageChange={details?.percentageChange}
       />
       <DetailsCard data={details} />
-    </>
+    </ScrollView>
   ) : (
     <DetailsShimmer />
   );

@@ -29,6 +29,7 @@ type RenderSceneProps = SceneRendererProps & {
 const DetailsCard = ({ data }: IProps) => {
   const [index, setIndex] = React.useState(0);
   const totalWidth = Dimensions.get("screen").width;
+  const { height } = Dimensions.get("screen");
 
   const renderScene = ({ route }: RenderSceneProps) => {
     switch (route.key) {
@@ -51,6 +52,7 @@ const DetailsCard = ({ data }: IProps) => {
   return data ? (
     <>
       <TabView
+        style={{ height: height / 2 }}
         navigationState={{ index, routes }}
         renderScene={renderScene}
         onIndexChange={setIndex}
