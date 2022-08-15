@@ -17,7 +17,7 @@ export interface TickerDetails {
   ticker: string;
   logo: string | null;
   stats: Stats | null;
-  historicalPrices: number[] | null;
+  historicalPrices: GraphPoint[] | null;
   percentageChange: number;
   website: string | null;
   industry: string;
@@ -28,3 +28,7 @@ export type Loading = "IDLE" | "LOADING" | "REFRESH";
 export type RootStackParamList = {
   TickerDetails: { ticker: string };
 };
+export interface GraphPoint {
+  x: string;
+  y: number;
+}

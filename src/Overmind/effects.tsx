@@ -1,5 +1,5 @@
 import axios, { isAxiosError } from "../axios";
-import { Stats, Ticker, TickerDetails } from "../Models";
+import { GraphPoint, Stats, Ticker, TickerDetails } from "../Models";
 import {
   formatDateShort,
   getDetails,
@@ -49,7 +49,7 @@ export const api = {
 
       const detailsJson = await details?.data.results;
       var pricesArray: any[];
-      var historicalPrices: any[] | null = null;
+      var historicalPrices: GraphPoint[] | null = null;
       var percentageChange: number = 0;
       var stats: Stats = null;
       var pricesData = prices?.data;
