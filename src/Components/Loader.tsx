@@ -3,10 +3,11 @@ import React from "react";
 import { ActivityIndicator } from "react-native";
 import { useActions, useAppState } from "../Overmind/helper";
 import { colors } from "../theme";
-
-const Loader = () => {
+interface IProps {
+  retrieveMore: () => {};
+}
+const Loader = ({ retrieveMore }: IProps) => {
   const { retrieve_load } = useAppState();
-  const { retrieveMoreTickers } = useActions();
   return retrieve_load === "LOADING" ? (
     <ActivityIndicator
       testID="activity-indicator"
@@ -18,7 +19,7 @@ const Loader = () => {
       name="reload"
       type="ionicon"
       onPress={() => {
-        retrieveMoreTickers();
+        retrieveMore();
       }}
     />
   ) : null;

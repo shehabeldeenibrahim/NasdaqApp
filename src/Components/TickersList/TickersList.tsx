@@ -1,8 +1,7 @@
 // Imports: Dependencies
 import React from "react";
-import { ActivityIndicator, FlatList, StyleSheet, View } from "react-native";
+import { FlatList, StyleSheet, View } from "react-native";
 import { Ticker } from "../../models";
-import { colors } from "../../theme";
 import Loader from "../Loader";
 import Item from "./Item";
 interface IProps {
@@ -46,7 +45,7 @@ const TickerList = ({ data, retrieveMore }: IProps) => {
         //   refreshing={refreshing}
         // Optimization attributes
         initialNumToRender={10}
-        ListFooterComponent={<Loader />}
+        ListFooterComponent={<Loader retrieveMore={retrieveMore} />}
       />
     </>
   );

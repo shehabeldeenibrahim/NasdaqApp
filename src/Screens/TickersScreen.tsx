@@ -14,23 +14,31 @@ interface Props {
  * @param  none
  */
 const TickersScreen: React.FC<Props> = ({ navigation }) => {
-  const { searchTickers, retrieveMoreTickers } = useActions();
-  const { tickers, search_load } = useAppState();
+  const {
+    getAllTickers,
+    searchTickers,
+    retrieveMoreTickers,
+    retrieveMoreSearchTickers,
+  } = useActions();
+  const { tickers, search_load, search_tickers } = useAppState();
   const [query, setQuery] = useState("");
   const debouncedSearch = useDebounce(query, 500);
-
+  const [isSearch, setIsSearch] = useState(false);
   const handleChange = (query: string) => {
     setQuery(query);
   };
   useEffect(() => {
     // TODO: scroll to top when search called
-    if (debouncedSearch) searchTickers(debouncedSearch);
-    else {
+    if (debouncedSearch) {
+      setIsSearch(true);
+      searchTickers(debouncedSearch);
+    } else {
       // TODO: show first list again
+      setIsSearch(false);
     }
   }, [debouncedSearch]);
   useEffect(() => {
-    searchTickers("");
+    getAllTickers();
   }, []);
   return (
     <View>
@@ -47,7 +55,12 @@ const TickersScreen: React.FC<Props> = ({ navigation }) => {
         value={query}
       />
       {tickers?.length === 0 ? <ListShimmer /> : null}
-      <TickerList data={tickers} retrieveMore={retrieveMoreTickers} />
+      <TickerList
+        data={isSearch ? search_tickers : tickers}
+        retrieveMore={
+          isSearch ? retrieveMoreSearchTickers : retrieveMoreTickers
+        }
+      />
     </View>
   );
 };
