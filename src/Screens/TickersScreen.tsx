@@ -48,6 +48,11 @@ const TickersScreen: React.FC<Props> = ({ navigation }) => {
         platform="ios"
         containerStyle={{
           backgroundColor: "transparent",
+          shadowColor: "#470000",
+          shadowOffset: { width: 0, height: 1 },
+          shadowOpacity: 0.2,
+          elevation: 3,
+          paddingHorizontal: "1.5%",
         }}
         inputContainerStyle={{ backgroundColor: "white" }}
         leftIconContainerStyle={{ backgroundColor: "white" }}
