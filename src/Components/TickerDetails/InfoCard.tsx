@@ -20,6 +20,7 @@ const InfoCard = ({ data }: IProps) => {
       <View style={{ flexDirection: "row" }}>
         {data?.logo ? (
           <Image
+            testID="info-img-test"
             style={styles.image}
             source={{
               uri: `${data?.logo}?apikey=${APIKEY}`,
