@@ -25,9 +25,25 @@ const Stack = createNativeStackNavigator();
 
 function RootNavigator() {
   return (
-    <Stack.Navigator initialRouteName="Tickers">
-      <Stack.Screen name="Tickers" component={TickersScreen} />
-      <Stack.Screen name="TickerDetails" component={TickerDetailsScreen} />
+    <Stack.Navigator
+      initialRouteName="Tickers"
+      screenOptions={{
+        headerStyle: { backgroundColor: colors.primary },
+        headerTitleStyle: { color: "white" },
+        headerTitleAlign: "center",
+        headerTintColor: "white",
+      }}
+    >
+      <Stack.Screen
+        name="Tickers"
+        component={TickersScreen}
+        options={{ title: "Explore" }}
+      />
+      <Stack.Screen
+        name="TickerDetails"
+        component={TickerDetailsScreen}
+        options={({ route }) => ({ title: route?.params?.headerTitle })}
+      />
     </Stack.Navigator>
   );
 }

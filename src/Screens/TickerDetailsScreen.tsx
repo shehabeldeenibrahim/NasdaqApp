@@ -1,14 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { View } from "react-native";
 import NoData from "../Components/NoData";
 import DetailsCard from "../Components/TickerDetails/DetailsCard";
 import DetailsShimmer from "../Components/TickerDetails/DetailsShimmer";
 import InfoCard from "../Components/TickerDetails/InfoCard";
 import StatsGraph from "../Components/TickerDetails/StatsGraph";
-import ListShimmer from "../Components/TickersList/ListShimmer";
 import { TickerDetails } from "../models";
 import { useActions, useAppState } from "../Overmind/helper";
-import { createData, getPercentageChange } from "../utils";
 
 interface IProps {
   route: any;
@@ -25,6 +22,9 @@ const TickerDetailsScreen: React.FC<IProps> = (props) => {
   const { ticker } = props.route.params;
   const details: TickerDetails | null = tickerDetails[ticker];
   useEffect(() => {
+    props.navigation.setOptions({
+      title: ticker,
+    });
     getTickerDetails(ticker);
   }, []);
   if (!details?.stats && !details?.historicalPrices && !details_load)
