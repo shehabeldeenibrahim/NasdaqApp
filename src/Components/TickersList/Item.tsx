@@ -1,10 +1,12 @@
 import React from "react";
-import { useNavigation, useTheme } from "@react-navigation/native";
+import { useNavigation } from "@react-navigation/native";
 import { Avatar, ListItem, Text } from "@rneui/base";
 import { TextStyle, TouchableOpacity, View } from "react-native";
-import { Ticker } from "../../models";
+import { RootStackParamList, Ticker } from "../../models";
 import { getIconName, getInitials } from "../../utils";
 import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
+import { NativeStackNavigationProp } from "@react-navigation/native-stack";
+import { colors } from "../../theme";
 
 interface IProps {
   ticker: Ticker;
@@ -15,37 +17,42 @@ interface IProps {
  */
 
 const Item = ({ ticker }: IProps) => {
-  const navigation = useNavigation();
-  const theme = useTheme();
+  const navigation =
+    useNavigation<NativeStackNavigationProp<RootStackParamList>>();
+
+  /* View */
   return (
     <TouchableOpacity
       onPress={() => {
-        navigation?.navigate("TickerDetails" as never, {
+        navigation?.navigate("TickerDetails", {
           ticker: ticker.ticker,
         });
       }}
     >
+      {/* Container */}
       <View>
         <ListItem containerStyle={styles.container}>
+          {/* Avatar */}
           <Avatar
             rounded
             title={getInitials(ticker.name)}
-            containerStyle={{ backgroundColor: theme.colors.primary }}
+            containerStyle={{ backgroundColor: colors.primary }}
           />
           <ListItem.Content>
+            {/* Title */}
             <ListItem.Title style={styles.title}>
               {ticker.ticker}
             </ListItem.Title>
-            <ListItem.Subtitle
-              numberOfLines={1}
-              style={{ color: theme.colors.gray }}
-            >
+            {/* Subtitle */}
+            <ListItem.Subtitle numberOfLines={1} style={{ color: colors.gray }}>
               {ticker.name}
             </ListItem.Subtitle>
           </ListItem.Content>
+          {/* Market Icon */}
           <FontAwesomeIcon
+            testID="icon-test"
             size={30}
-            color={theme.colors.primary}
+            color={colors.primary}
             icon={getIconName(ticker.market)}
           />
           <ListItem.Chevron color="gray" />

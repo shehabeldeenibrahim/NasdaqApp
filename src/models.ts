@@ -25,3 +25,6 @@ export interface TickerDetails {
   currency: string;
 }
 export type Loading = "IDLE" | "LOADING" | "REFRESH";
+export type RootStackParamList = {
+  TickerDetails: { ticker: string };
+};
