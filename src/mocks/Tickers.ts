@@ -1,4 +1,4 @@
-import { Stats, Ticker, TickerDetails } from "../models";
+import { GraphPoint, Stats, Ticker, TickerDetails } from "../models";
 
 export const TickersData: Ticker[] = [
   {
@@ -67,3 +67,9 @@ export const TickerDetailsData: TickerDetails = {
   percentageChange: 2.5,
   description: "description here",
 };
+
+export const GraphData: GraphPoint[] = [
+  { x: "22-07", y: 4 },
+  { x: "23-07", y: 4.1 },
+  { x: "25-07", y: 5 },
+];
