@@ -1,10 +1,10 @@
-import { Icon, Text } from "@rneui/themed";
+import { Icon } from "@rneui/themed";
 import React from "react";
 import { ActivityIndicator } from "react-native";
-import { useActions, useAppState } from "../Overmind/helper";
+import { useAppState } from "../Overmind/helper";
 import { colors } from "../theme";
 interface IProps {
-  retrieveMore: () => {};
+  retrieveMore?: () => {};
 }
 const Loader = ({ retrieveMore }: IProps) => {
   const { retrieve_load } = useAppState();
@@ -19,7 +19,7 @@ const Loader = ({ retrieveMore }: IProps) => {
       name="reload"
       type="ionicon"
       onPress={() => {
-        retrieveMore();
+        if (retrieveMore) retrieveMore();
       }}
     />
   ) : null;
