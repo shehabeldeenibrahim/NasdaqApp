@@ -5,7 +5,7 @@ import { faO } from "@fortawesome/free-solid-svg-icons/faO";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { Icon } from "@rneui/themed";
 import axios from "./api";
-import { PRICES_URL, TICKERS_URL } from "./Constants";
+import { PRICES_URL, TICKERS_URL } from "@env";
 
 export const getInitials = (name: string) => {
   if (!name?.length) return "";

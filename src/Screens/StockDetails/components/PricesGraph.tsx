@@ -9,7 +9,7 @@ import {
 import { GraphPoint } from "../../../models";
 import { colors } from "../../../Theme/colors";
 import NoData from "../../../Components/NoData";
-import { SCREEN_WIDTH } from "../../../Theme/dimentions";
+import { SCREEN_WIDTH } from "../../../Theme/dimensions";
 /**
  * Graph showing stock prices for the last 30 days
  * @param {number[]} data stock data for the last 30 days

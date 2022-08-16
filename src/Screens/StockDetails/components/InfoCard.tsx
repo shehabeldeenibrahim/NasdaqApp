@@ -5,8 +5,7 @@ import { TickerDetails } from "../../../models";
 import { colors } from "../../../Theme/colors";
 import { getInitials } from "../../../utils";
 import Loader from "../../../Components/Loader";
-import RetrieveListLoader from "../../Explore/components/RetrieveListLoader";
-import { APIKEY } from "../../../../config";
+import { APIKEY } from "@env";
 
 interface IProps {
   data: TickerDetails;

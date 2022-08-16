@@ -1,7 +1,7 @@
 import React from "react";
 import { Skeleton } from "@rneui/themed";
 import { StyleSheet, View } from "react-native";
-import { SCREEN_HEIGHT, SCREEN_WIDTH } from "../../../Theme/dimentions";
+import { SCREEN_HEIGHT, SCREEN_WIDTH } from "../../../Theme/dimensions";
 
 const createShimmerArray = () => {
   var shimmerItems = [];

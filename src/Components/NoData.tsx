@@ -3,7 +3,7 @@ import { Text } from "@rneui/themed";
 import React from "react";
 import { View, Image, StyleSheet } from "react-native";
 import { colors } from "../Theme/colors";
-import { SCREEN_HEIGHT } from "../Theme/dimentions";
+import { SCREEN_HEIGHT } from "../Theme/dimensions";
 
 interface IProps {
   center?: boolean;

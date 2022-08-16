@@ -11,7 +11,7 @@ import {
 } from "react-native-tab-view";
 import { getTabBarIcon } from "../../../../utils";
 import { TickerDetails } from "../../../../models";
-import { SCREEN_HEIGHT, SCREEN_WIDTH } from "../../../../Theme/dimentions";
+import { SCREEN_HEIGHT, SCREEN_WIDTH } from "../../../../Theme/dimensions";
 
 interface IProps {
   data: TickerDetails;

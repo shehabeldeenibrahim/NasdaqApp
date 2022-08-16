@@ -1,4 +1,4 @@
-import { TICKERS_URL } from "../Constants";
+import { TICKERS_URL } from "@env";
 import { Context } from "./helper";
 
 export const searchTickers = async (
