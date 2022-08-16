@@ -2,12 +2,12 @@ import React from "react";
 import { useNavigation } from "@react-navigation/native";
 import { Avatar, ListItem, Text } from "@rneui/base";
 import { TextStyle, TouchableOpacity, View } from "react-native";
-import { RootStackParamList, Ticker } from "../../models";
-import { getIconName, getInitials } from "../../utils";
+import { RootStackParamList, Ticker } from "../../../models";
+import { getIconName, getInitials } from "../../../utils";
 import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
-import { colors } from "../../theme";
-import OTCIcon from "../OTCIcon";
+import { colors } from "../../../theme";
+import OTCIcon from "../../../Components/OTCIcon";
 
 interface IProps {
   ticker: Ticker;
@@ -17,7 +17,7 @@ interface IProps {
  * @param {Ticker} ticker ticker data to be displayed
  */
 
-const Item = ({ ticker }: IProps) => {
+const StockListItem = ({ ticker }: IProps) => {
   const navigation =
     useNavigation<NativeStackNavigationProp<RootStackParamList>>();
 
@@ -81,4 +81,4 @@ const styles = {
   },
   title: { fontWeight: "bold" } as TextStyle,
 };
-export default Item;
+export default StockListItem;

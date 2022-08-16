@@ -1,8 +1,8 @@
 import React from "react";
 import { render, screen } from "@testing-library/react-native";
-import { TickerDetailsData } from "../../../mocks/Tickers";
+import { TickerDetailsData } from "../../../../mocks/Tickers";
 import InfoCard from "../InfoCard";
-import { APIKEY } from "../../../Constants";
+import { APIKEY } from "../../../../Constants";
 
 // Mock Navigation
 jest.mock("@react-navigation/native", () => {

@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { ScrollView } from "react-native";
-import NoData from "../Components/NoData";
-import DetailsCard from "../Components/TickerDetails/DetailsCard";
-import DetailsShimmer from "../Components/TickerDetails/DetailsShimmer";
-import InfoCard from "../Components/TickerDetails/InfoCard";
-import StatsGraph from "../Components/TickerDetails/StatsGraph";
-import { TickerDetails } from "../models";
-import { useActions, useAppState } from "../Overmind/helper";
+import NoData from "../../Components/NoData";
+import TabsCard from "./components/DetailsTabs/TabsCard";
+import DetailsShimmer from "./StockDetailsLoader";
+import InfoCard from "./components/InfoCard";
+import PricesGraph from "./components/PricesGraph";
+import { TickerDetails } from "../../models";
+import { useActions, useAppState } from "../../Overmind/helper";
 
 interface IProps {
   route: any;
@@ -33,17 +33,17 @@ const TickerDetailsScreen: React.FC<IProps> = (props) => {
       <>
         <InfoCard data={details} />
         <NoData center />
-        {details?.description && <DetailsCard data={details} />}
+        {details?.description && <TabsCard data={details} />}
       </>
     );
   return details ? (
     <ScrollView>
       <InfoCard data={details} />
-      <StatsGraph
+      <PricesGraph
         data={details?.historicalPrices}
         percentageChange={details?.percentageChange}
       />
-      <DetailsCard data={details} />
+      <TabsCard data={details} />
     </ScrollView>
   ) : (
     <DetailsShimmer />

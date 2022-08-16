@@ -1,10 +1,10 @@
 import { SearchBar } from "@rneui/base";
 import React, { useEffect, useState } from "react";
 import { View } from "react-native";
-import ListShimmer from "../Components/TickersList/ListShimmer";
-import TickerList from "../Components/TickersList/TickersList";
-import useDebounce from "../hooks/useDebounce";
-import { useActions, useAppState } from "../Overmind/helper";
+import StockListLoader from "./components/StockListLoader";
+import StockList from "./components/StockList";
+import useDebounce from "../../hooks/useDebounce";
+import { useActions, useAppState } from "../../Overmind/helper";
 
 interface Props {
   navigation: any;
@@ -13,7 +13,7 @@ interface Props {
  * Main Screen Displays the List of tickers
  * @param  none
  */
-const TickersScreen: React.FC<Props> = ({ navigation }) => {
+const ExploreScreen: React.FC<Props> = ({ navigation }) => {
   const {
     getAllTickers,
     searchTickers,
@@ -59,8 +59,8 @@ const TickersScreen: React.FC<Props> = ({ navigation }) => {
         onChangeText={handleChange}
         value={query}
       />
-      {tickers?.length === 0 ? <ListShimmer /> : null}
-      <TickerList
+      {tickers?.length === 0 ? <StockListLoader /> : null}
+      <StockList
         data={isSearch ? search_tickers : tickers}
         retrieveMore={
           isSearch ? retrieveMoreSearchTickers : retrieveMoreTickers
@@ -70,4 +70,4 @@ const TickersScreen: React.FC<Props> = ({ navigation }) => {
     </View>
   );
 };
-export default TickersScreen;
+export default ExploreScreen;

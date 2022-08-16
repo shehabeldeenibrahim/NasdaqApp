@@ -1,6 +1,6 @@
 import React from "react";
 // import { Tab, TabView } from "@rneui/themed";
-import { colors } from "../../theme";
+import { colors } from "../../../../theme";
 import { Dimensions } from "react-native";
 import InfoTab from "./InfoTab";
 import StatsTab from "./StatsTab";
@@ -10,8 +10,8 @@ import {
   TabBar,
   SceneRendererProps,
 } from "react-native-tab-view";
-import { getTabBarIcon } from "../../utils";
-import { TickerDetails } from "../../models";
+import { getTabBarIcon } from "../../../../utils";
+import { TickerDetails } from "../../../../models";
 
 interface IProps {
   data: TickerDetails;
@@ -26,7 +26,7 @@ type RenderSceneProps = SceneRendererProps & {
  * Info header card showing ticker details
  * @param {data} TickerDetails ticker details to be displayed
  */
-const DetailsCard = ({ data }: IProps) => {
+const TabsCard = ({ data }: IProps) => {
   const [index, setIndex] = React.useState(0);
   const totalWidth = Dimensions.get("screen").width;
   const { height } = Dimensions.get("screen");
@@ -76,4 +76,4 @@ const DetailsCard = ({ data }: IProps) => {
     </>
   ) : null;
 };
-export default DetailsCard;
+export default TabsCard;

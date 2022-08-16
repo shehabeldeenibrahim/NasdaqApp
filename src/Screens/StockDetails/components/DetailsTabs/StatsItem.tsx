@@ -2,8 +2,8 @@ import { Text, Tooltip } from "@rneui/base";
 import { Icon } from "@rneui/themed";
 import React, { useState } from "react";
 import { View, StyleSheet } from "react-native";
-import { statsDefinitions } from "../../Constants";
-import { colors } from "../../theme";
+import { statsDefinitions } from "../../../../Constants";
+import { colors } from "../../../../theme";
 
 interface IProps {
   title: string;

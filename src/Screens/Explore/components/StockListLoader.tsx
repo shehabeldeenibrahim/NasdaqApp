@@ -22,11 +22,11 @@ const OneShimmer = () => {
   );
 };
 const shimmersArray = createShimmerArray();
-const ListShimmer = () => {
+const StockListLoader = () => {
   return <View style={styles.container}>{shimmersArray}</View>;
 };
 
-export default ListShimmer;
+export default StockListLoader;
 const styles = StyleSheet.create({
   skeleton: { borderRadius: 8, margin: "2%" },
   container: { alignItems: "center" },

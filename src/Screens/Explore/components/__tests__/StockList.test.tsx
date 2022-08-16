@@ -1,8 +1,8 @@
 import React from "react";
 import { render, screen, fireEvent } from "@testing-library/react-native";
-import TickerList from "../TickersList";
-import { TickersData } from "../../../mocks/Tickers";
-import { Loading } from "../../../models";
+import StockList from "../StockList";
+import { TickersData } from "../../../../mocks/Tickers";
+import { Loading } from "../../../../models";
 
 const retrieveMore = jest.fn();
 // Mock Navigation
@@ -25,7 +25,7 @@ jest.mock("@fortawesome/react-native-fontawesome", () => ({
 beforeEach(() => {
   const retrieve_load: Loading = "IDLE";
   render(
-    <TickerList
+    <StockList
       data={TickersData}
       retrieveMore={retrieveMore}
       retrieve_load={retrieve_load}

@@ -1,8 +1,8 @@
 import { Card, Divider } from "@rneui/base";
 import React from "react";
 import { View, StyleSheet } from "react-native";
-import { Stats } from "../../models";
-import NoData from "../NoData";
+import { Stats } from "../../../../models";
+import NoData from "../../../../Components/NoData";
 import StatsItem from "./StatsItem";
 interface IProps {
   stats: Stats;

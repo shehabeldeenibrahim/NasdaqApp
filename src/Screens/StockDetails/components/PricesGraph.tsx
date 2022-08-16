@@ -6,9 +6,9 @@ import {
   VictoryLine,
   VictoryAxis,
 } from "victory-native";
-import { GraphPoint } from "../../models";
-import { colors } from "../../theme";
-import NoData from "../NoData";
+import { GraphPoint } from "../../../models";
+import { colors } from "../../../theme";
+import NoData from "../../../Components/NoData";
 /**
  * Graph showing stock prices for the last 30 days
  * @param {number[]} data stock data for the last 30 days
@@ -20,7 +20,7 @@ interface IProps {
 }
 const { width, height } = Dimensions.get("window");
 
-const StatsGraph = ({ data, percentageChange }: IProps) => {
+const PricesGraph = ({ data, percentageChange }: IProps) => {
   return data && data.length > 1 ? (
     <View testID="graph-test">
       <VictoryChart
@@ -69,4 +69,4 @@ const styles = {
   },
   xAxis: { grid: { stroke: "rgba(128, 162, 191, 0.3)" } },
 };
-export default StatsGraph;
+export default PricesGraph;

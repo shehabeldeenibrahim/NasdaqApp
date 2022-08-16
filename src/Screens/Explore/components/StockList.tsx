@@ -1,16 +1,16 @@
 // Imports: Dependencies
 import React from "react";
 import { FlatList, StyleSheet, View } from "react-native";
-import { Loading, Ticker } from "../../models";
-import Loader from "../Loader";
-import Item from "./Item";
+import { Loading, Ticker } from "../../../models";
+import Loader from "../../../Components/Loader";
+import StockListItem from "./StockListItem";
 interface IProps {
   data: Ticker[];
   retrieveMore: () => {};
   retrieve_load: Loading;
   test?: boolean;
 }
-const TickerList = ({
+const StockList = ({
   data,
   retrieveMore,
   retrieve_load,
@@ -30,7 +30,7 @@ const TickerList = ({
         renderItem={({ item }) => (
           <View>
             {/* Card Component */}
-            <Item
+            <StockListItem
               // Props passed
               ticker={item}
             />
@@ -63,4 +63,4 @@ const TickerList = ({
 const styles = StyleSheet.create({
   flatlist: { marginBottom: "25%" },
 });
-export default TickerList;
+export default StockList;

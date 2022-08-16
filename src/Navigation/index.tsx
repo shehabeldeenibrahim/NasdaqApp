@@ -1,8 +1,8 @@
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import React from "react";
 import { DefaultTheme, NavigationContainer } from "@react-navigation/native";
-import TickersScreen from "../Screens/TickersScreen";
-import TickerDetailsScreen from "../Screens/TickerDetailsScreen";
+import ExploreScreen from "../Screens/Explore/Explore";
+import TickerDetailsScreen from "../Screens/StockDetails/StockDetails";
 import { colors } from "../theme";
 
 /**
@@ -37,7 +37,7 @@ function RootNavigator() {
     >
       <Stack.Screen
         name="Tickers"
-        component={TickersScreen}
+        component={ExploreScreen}
         options={{ title: "Explore" }}
       />
       <Stack.Screen

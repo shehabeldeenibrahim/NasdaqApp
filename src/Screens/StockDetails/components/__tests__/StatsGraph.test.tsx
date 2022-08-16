@@ -1,8 +1,8 @@
 import React from "react";
 import { render, screen } from "@testing-library/react-native";
-import StatsTab from "../StatsTab";
-import StatsGraph from "../StatsGraph";
-import { GraphData } from "../../../mocks/Tickers";
+import StatsTab from "../DetailsTabs/StatsTab";
+import PricesGraph from "../PricesGraph";
+import { GraphData } from "../../../../mocks/Tickers";
 
 // Mock Navigation
 jest.mock("@react-navigation/native", () => {
@@ -22,7 +22,7 @@ jest.mock("@fortawesome/react-native-fontawesome", () => ({
 
 describe("Stats Graph", () => {
   test("Render graph points", () => {
-    render(<StatsGraph data={GraphData} percentageChange={0} />);
+    render(<PricesGraph data={GraphData} percentageChange={0} />);
 
     // Check for all stats provided
     expect(screen.getByTestId("graph-test")).toBeDefined();
