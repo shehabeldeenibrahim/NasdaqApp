@@ -1,6 +1,6 @@
 import { Ticker } from "../models";
 
-export const TickersData: Ticker[] = [
+export const StockListData: Ticker[] = [
   {
     ticker: "AAPL",
     name: "Mission Advancement Corp.",

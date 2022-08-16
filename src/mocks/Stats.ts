@@ -1,6 +1,6 @@
 import { Stats } from "../models";
 
-export const stats: Stats = {
+export const StatsData: Stats = {
   open: 4,
   close: 5.201,
   volume: 422443,

@@ -1,6 +1,6 @@
 import React from "react";
 import { render, screen } from "@testing-library/react-native";
-import { TickerDetailsData } from "../../../../mocks/StockDetails";
+import { StockDetailsData } from "../../../../mocks/StockDetails";
 import InfoCard from "../InfoCard";
 import { APIKEY } from "../../../../Constants";
 
@@ -20,7 +20,7 @@ jest.mock("@fortawesome/react-native-fontawesome", () => ({
   FontAwesomeIcon: "",
 }));
 beforeEach(() => {
-  render(<InfoCard data={TickerDetailsData} />);
+  render(<InfoCard data={StockDetailsData} />);
 });
 
 describe("Info Card", () => {
@@ -36,7 +36,7 @@ describe("Info Card", () => {
 
   test("Renders image if logo url provided", () => {
     // Add img url to details object
-    let newDetails = Object.assign({}, TickerDetailsData);
+    let newDetails = Object.assign({}, StockDetailsData);
     const imgURL = "https://i.pravatar.cc/300";
     newDetails.logo = imgURL;
 

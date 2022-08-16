@@ -1,7 +1,7 @@
 import React from "react";
 import { render, screen } from "@testing-library/react-native";
 import InfoTab from "../InfoTab";
-import { TickerDetailsData } from "../../../../mocks/StockDetails";
+import { StockDetailsData } from "../../../../mocks/StockDetails";
 
 // Mock Navigation
 jest.mock("@react-navigation/native", () => {
@@ -21,8 +21,8 @@ jest.mock("@fortawesome/react-native-fontawesome", () => ({
 beforeEach(() => {
   render(
     <InfoTab
-      description={TickerDetailsData.description}
-      website={TickerDetailsData.website}
+      description={StockDetailsData.description}
+      website={StockDetailsData.website}
     />
   );
 });
@@ -32,7 +32,7 @@ describe("Info Tab", () => {
     // Check for correct description rendered
     expect(
       screen.getAllByText(
-        TickerDetailsData.description ? TickerDetailsData?.description : ""
+        StockDetailsData.description ? StockDetailsData?.description : ""
       )
     ).toBeDefined();
     // Check for correct title rendered
@@ -45,7 +45,7 @@ describe("Info Tab", () => {
   });
 
   test("Render website button if null passed", () => {
-    let newDetails = Object.assign({}, TickerDetailsData);
+    let newDetails = Object.assign({}, StockDetailsData);
     render(<InfoTab description={newDetails.description} website={null} />);
     // Check for correct title rendered
     expect(screen.queryByText("Visit Website")).toBeNull();

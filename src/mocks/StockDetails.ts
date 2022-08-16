@@ -1,11 +1,11 @@
 import { TickerDetails } from "../models";
-import { stats } from "./Stats";
+import { StatsData } from "./Stats";
 
-export const TickerDetailsData: TickerDetails = {
+export const StockDetailsData: TickerDetails = {
   name: "Apple co",
   ticker: "AAPL",
   logo: null,
-  stats: stats,
+  stats: StatsData,
   website: "http://www.google.com",
   currency: "USD",
   industry: "industry",
