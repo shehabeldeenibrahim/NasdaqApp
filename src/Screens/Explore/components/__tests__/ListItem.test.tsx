@@ -1,7 +1,7 @@
 import React from "react";
 import { render, screen } from "@testing-library/react-native";
 import StockListItem from "../StockListItem";
-import { TickersData } from "../../../../mocks/StockDetails";
+import { StockListData } from "../../../../mocks/StockList";
 
 // Mock Navigation
 jest.mock("@react-navigation/native", () => {
@@ -19,7 +19,7 @@ jest.mock("@fortawesome/react-native-fontawesome", () => ({
   FontAwesomeIcon: "",
 }));
 beforeEach(() => {
-  render(<StockListItem ticker={TickersData[0]} />);
+  render(<StockListItem ticker={StockListData[0]} />);
 });
 describe("Ticker Item", () => {
   test("Renders ticker", () => {

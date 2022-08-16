@@ -1,8 +1,8 @@
 import React from "react";
 import { render, screen, fireEvent } from "@testing-library/react-native";
 import StockList from "../StockList";
-import { TickersData } from "../../../../mocks/StockDetails";
 import { Loading } from "../../../../models";
+import { StockListData } from "../../../../mocks/StockList";
 
 const retrieveMore = jest.fn();
 // Mock Navigation
@@ -26,7 +26,7 @@ beforeEach(() => {
   const retrieve_load: Loading = "IDLE";
   render(
     <StockList
-      data={TickersData}
+      data={StockListData}
       retrieveMore={retrieveMore}
       retrieve_load={retrieve_load}
       test={true}
@@ -66,7 +66,7 @@ describe("Ticker List", () => {
   });
   test("Renders All List Items", () => {
     expect(screen.getAllByTestId("RNE__LISTITEM__padView").length).toEqual(
-      TickersData.length
+      StockListData.length
     );
   });
 });

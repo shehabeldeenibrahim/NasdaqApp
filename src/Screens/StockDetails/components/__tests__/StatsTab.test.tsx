@@ -1,7 +1,7 @@
 import React from "react";
 import { render, screen } from "@testing-library/react-native";
-import { stats } from "../../../../mocks/StockDetails";
 import StatsTab from "../DetailsTabs/StatsTab";
+import { StatsData } from "../../../../mocks/Stats";
 
 // Mock Navigation
 jest.mock("@react-navigation/native", () => {
@@ -21,7 +21,7 @@ jest.mock("@fortawesome/react-native-fontawesome", () => ({
 
 describe("Stats Tab", () => {
   test("Render all stats", () => {
-    render(<StatsTab stats={stats} />);
+    render(<StatsTab stats={StatsData} />);
     // Check for all stats provided
     expect(screen.getByText("Open")).toBeDefined();
     expect(screen.getByText("Close")).toBeDefined();
