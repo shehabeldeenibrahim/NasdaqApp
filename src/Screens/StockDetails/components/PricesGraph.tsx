@@ -1,5 +1,5 @@
 import React from "react";
-import { Dimensions, View } from "react-native";
+import { View } from "react-native";
 import {
   VictoryChart,
   VictoryTheme,
@@ -7,8 +7,9 @@ import {
   VictoryAxis,
 } from "victory-native";
 import { GraphPoint } from "../../../models";
-import { colors } from "../../../theme";
+import { colors } from "../../../Theme/colors";
 import NoData from "../../../Components/NoData";
+import { SCREEN_WIDTH } from "../../../Theme/dimentions";
 /**
  * Graph showing stock prices for the last 30 days
  * @param {number[]} data stock data for the last 30 days
@@ -18,14 +19,13 @@ interface IProps {
   data: GraphPoint[] | null;
   percentageChange: number;
 }
-const { width, height } = Dimensions.get("window");
 
 const PricesGraph = ({ data, percentageChange }: IProps) => {
   return data && data.length > 1 ? (
     <View testID="graph-test">
       <VictoryChart
         height={250}
-        width={width + 25}
+        width={SCREEN_WIDTH + 25}
         theme={VictoryTheme.material}
         domainPadding={{ y: 15 }}
         style={{

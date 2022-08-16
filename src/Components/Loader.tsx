@@ -1,6 +1,6 @@
 import React from "react";
 import { ActivityIndicator } from "react-native";
-import { colors } from "../theme";
+import { colors } from "../Theme/colors";
 
 const Loader = () => {
   return (

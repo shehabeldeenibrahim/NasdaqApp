@@ -3,7 +3,7 @@ import React from "react";
 import { DefaultTheme, NavigationContainer } from "@react-navigation/native";
 import ExploreScreen from "../Screens/Explore/Explore";
 import TickerDetailsScreen from "../Screens/StockDetails/StockDetails";
-import { colors } from "../theme";
+import { colors } from "../Theme/colors";
 
 /**
  * Navigation configuration component

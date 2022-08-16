@@ -3,7 +3,7 @@ import React from "react";
 import { Image, StyleSheet, View } from "react-native";
 import { APIKEY } from "../../../Constants";
 import { TickerDetails } from "../../../models";
-import { colors } from "../../../theme";
+import { colors } from "../../../Theme/colors";
 import { getInitials } from "../../../utils";
 import Loader from "../../../Components/Loader";
 import RetrieveListLoader from "../../Explore/components/RetrieveListLoader";

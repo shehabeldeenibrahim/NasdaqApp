@@ -6,7 +6,7 @@ import { RootStackParamList, Ticker } from "../../../models";
 import { getIconName, getInitials } from "../../../utils";
 import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
-import { colors } from "../../../theme";
+import { colors } from "../../../Theme/colors";
 import OTCIcon from "../../../Components/OTCIcon";
 
 interface IProps {

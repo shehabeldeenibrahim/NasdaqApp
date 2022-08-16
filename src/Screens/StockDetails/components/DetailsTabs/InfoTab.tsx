@@ -1,10 +1,10 @@
 import { Text } from "@rneui/base";
-import { Dimensions, ScrollView, StyleSheet, View } from "react-native";
+import { ScrollView, StyleSheet, View } from "react-native";
 import ViewMoreText from "react-native-view-more-text";
 import { Button } from "@rneui/themed";
 import * as Linking from "expo-linking";
 import React from "react";
-import { colors } from "../../../../theme";
+import { colors } from "../../../../Theme/colors";
 import NoData from "../../../../Components/NoData";
 
 interface IProps {

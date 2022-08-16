@@ -1,7 +1,7 @@
 import React from "react";
 import { Skeleton } from "@rneui/themed";
-import { Dimensions, StyleSheet, View } from "react-native";
-const { width, height } = Dimensions.get("window");
+import { StyleSheet, View } from "react-native";
+import { SCREEN_HEIGHT, SCREEN_WIDTH } from "../../../Theme/dimentions";
 
 const createShimmerArray = () => {
   var shimmerItems = [];
@@ -15,8 +15,8 @@ const OneShimmer = () => {
   return (
     <Skeleton
       animation="pulse"
-      width={width - 30}
-      height={height / 15}
+      width={SCREEN_WIDTH - 30}
+      height={SCREEN_HEIGHT / 15}
       style={styles.skeleton}
     />
   );

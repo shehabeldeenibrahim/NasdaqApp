@@ -1,27 +1,27 @@
 import React from "react";
 import { Skeleton } from "@rneui/themed";
-import { Dimensions, StyleSheet, View } from "react-native";
-const { width, height } = Dimensions.get("window");
+import { StyleSheet, View } from "react-native";
+import { SCREEN_HEIGHT, SCREEN_WIDTH } from "../../Theme/dimentions";
 
 const DetailsShimmer = () => {
   return (
     <View style={styles.container}>
       <Skeleton
         animation="pulse"
-        width={width - 30}
-        height={height / 8}
+        width={SCREEN_WIDTH - 30}
+        height={SCREEN_HEIGHT / 8}
         style={styles.skeleton}
       />
       <Skeleton
         animation="pulse"
-        width={width - 30}
-        height={height / 4}
+        width={SCREEN_WIDTH - 30}
+        height={SCREEN_HEIGHT / 4}
         style={styles.skeleton}
       />
       <Skeleton
         animation="pulse"
-        width={width - 30}
-        height={height / 2.5}
+        width={SCREEN_WIDTH - 30}
+        height={SCREEN_HEIGHT / 2.5}
         style={styles.skeleton}
       />
     </View>

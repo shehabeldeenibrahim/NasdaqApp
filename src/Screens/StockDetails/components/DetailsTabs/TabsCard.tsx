@@ -1,7 +1,6 @@
 import React from "react";
 // import { Tab, TabView } from "@rneui/themed";
-import { colors } from "../../../../theme";
-import { Dimensions } from "react-native";
+import { colors } from "../../../../Theme/colors";
 import InfoTab from "./InfoTab";
 import StatsTab from "./StatsTab";
 import {
@@ -12,6 +11,7 @@ import {
 } from "react-native-tab-view";
 import { getTabBarIcon } from "../../../../utils";
 import { TickerDetails } from "../../../../models";
+import { SCREEN_HEIGHT, SCREEN_WIDTH } from "../../../../Theme/dimentions";
 
 interface IProps {
   data: TickerDetails;
@@ -28,8 +28,6 @@ type RenderSceneProps = SceneRendererProps & {
  */
 const TabsCard = ({ data }: IProps) => {
   const [index, setIndex] = React.useState(0);
-  const totalWidth = Dimensions.get("screen").width;
-  const { height } = Dimensions.get("screen");
 
   const renderScene = ({ route }: RenderSceneProps) => {
     switch (route.key) {
@@ -52,7 +50,7 @@ const TabsCard = ({ data }: IProps) => {
   return data ? (
     <>
       <TabView
-        style={{ height: height / 2 }}
+        style={{ height: SCREEN_HEIGHT / 2 }}
         navigationState={{ index, routes }}
         renderScene={renderScene}
         onIndexChange={setIndex}
@@ -63,8 +61,8 @@ const TabsCard = ({ data }: IProps) => {
             indicatorStyle={{
               backgroundColor: colors.primary,
               height: 2,
-              width: totalWidth / 4,
-              left: totalWidth / 8,
+              width: SCREEN_WIDTH / 4,
+              left: SCREEN_WIDTH / 8,
               alignItems: "center",
             }}
             style={{ backgroundColor: "transparent" }}

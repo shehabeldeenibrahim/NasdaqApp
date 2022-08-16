@@ -3,7 +3,7 @@ import { Icon } from "@rneui/themed";
 import React, { useState } from "react";
 import { View, StyleSheet } from "react-native";
 import { statsDefinitions } from "../../../../Constants";
-import { colors } from "../../../../theme";
+import { colors } from "../../../../Theme/colors";
 
 interface IProps {
   title: string;
