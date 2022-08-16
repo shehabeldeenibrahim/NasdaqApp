@@ -6,6 +6,7 @@ import { TickerDetails } from "../../../models";
 import { colors } from "../../../theme";
 import { getInitials } from "../../../utils";
 import Loader from "../../../Components/Loader";
+import RetrieveListLoader from "../../Explore/components/RetrieveListLoader";
 
 interface IProps {
   data: TickerDetails;
@@ -60,7 +61,7 @@ const InfoCard = ({ data }: IProps) => {
       </View>
     </Card>
   ) : (
-    <Loader retrieveLoad="LOADING" />
+    <Loader />
   );
 };
 const styles = StyleSheet.create({

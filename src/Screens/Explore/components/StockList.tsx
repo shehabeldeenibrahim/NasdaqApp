@@ -2,7 +2,7 @@
 import React from "react";
 import { FlatList, StyleSheet, View } from "react-native";
 import { Loading, Ticker } from "../../../models";
-import Loader from "../../../Components/Loader";
+import RetrieveListLoader from "./RetrieveListLoader";
 import StockListItem from "./StockListItem";
 interface IProps {
   data: Ticker[];
@@ -54,7 +54,10 @@ const StockList = ({
         initialNumToRender={10}
         // Loader on retriveMore
         ListFooterComponent={
-          <Loader retrieveMore={retrieveMore} retrieveLoad={retrieve_load} />
+          <RetrieveListLoader
+            retrieveMore={retrieveMore}
+            retrieveLoad={retrieve_load}
+          />
         }
       />
     </>
