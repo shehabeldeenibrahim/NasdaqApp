@@ -1,4 +1,4 @@
-import axios, { isAxiosError } from "../axios";
+import axios, { isAxiosError } from "../api";
 import { GraphPoint, Stats, Ticker, TickerDetails } from "../Models";
 import {
   formatDateShort,

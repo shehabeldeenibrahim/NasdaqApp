@@ -4,7 +4,7 @@ import { faBitcoinSign } from "@fortawesome/free-solid-svg-icons/faBitcoinSign";
 import { faO } from "@fortawesome/free-solid-svg-icons/faO";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { Icon } from "@rneui/themed";
-import axios from "./axios";
+import axios from "./api";
 import { PRICES_URL, TICKERS_URL } from "./Constants";
 
 export const getInitials = (name: string) => {
