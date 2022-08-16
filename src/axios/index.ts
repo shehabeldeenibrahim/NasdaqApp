@@ -1,8 +1,9 @@
 import axios from "axios";
 import { APIKEY } from "../Constants";
+import { BASE_URL } from "./constants";
 
 const customAxios = axios.create({
-  baseURL: "https://api.polygon.io",
+  baseURL: BASE_URL,
 });
 customAxios.defaults.params = {};
 customAxios.interceptors.request.use(
