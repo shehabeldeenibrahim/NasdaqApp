@@ -1,12 +1,12 @@
 import { Avatar, Card, Divider, Text } from "@rneui/themed";
 import React from "react";
 import { Image, StyleSheet, View } from "react-native";
-import { APIKEY } from "../../../Constants";
 import { TickerDetails } from "../../../models";
 import { colors } from "../../../Theme/colors";
 import { getInitials } from "../../../utils";
 import Loader from "../../../Components/Loader";
 import RetrieveListLoader from "../../Explore/components/RetrieveListLoader";
+import { APIKEY } from "../../../../config";
 
 interface IProps {
   data: TickerDetails;

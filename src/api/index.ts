@@ -1,5 +1,5 @@
 import axios from "axios";
-import { APIKEY } from "../Constants";
+import { APIKEY } from "../../config";
 import { BASE_URL } from "./constants";
 
 const customAxios = axios.create({
