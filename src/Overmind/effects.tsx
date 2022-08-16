@@ -1,103 +1,111 @@
-import axios, { isAxiosError } from "../api";
-import { GraphPoint, Stats, Ticker, TickerDetails } from "../Models";
+import axios from "../api";
+import { GraphPoint, QueryParams, Stats, TickerDetails } from "../Models";
 import {
-  formatDateShort,
+  IAggsResults,
+  ITickerDetailsResults,
+  ITickers,
+  ITickersResults,
+} from "../types/responses";
+import {
   getDetails,
+  getErrorMessage,
   getPercentageChange,
   getPrices,
+  mapArrayToGraph,
+  mapResponseToDetails,
+  mapResponseToStats,
+  mapResponseToTicker,
 } from "../utils";
 
 export const api = {
+  /**
+   * Search the api for the ticker matching
+   * the given `query`
+   * @param {string} query search query
+   * @param {string} url search url
+   */
   async searchTickers(url: string, query: string) {
     try {
-      const queryParams = {
+      // Search query params
+      const queryParams: QueryParams = {
         search: query,
         active: true,
         sort: "ticker",
         order: "asc",
         limit: 10,
       };
-      const response = await axios(url, {
+      // Fetch
+      const response = await axios.get<ITickers>(url, {
         params: queryParams,
       });
-      const json = await response?.data?.results;
+      // Grab result and next url
+      const resultsArray: ITickersResults[] = await response?.data?.results;
       const next_url = await response?.data?.next_url;
-      var result = json?.map((_ticker: any) => {
-        const ticker: Ticker = {
-          name: _ticker.name,
-          ticker: _ticker.ticker,
-          market: _ticker.market,
-        };
-        return ticker;
+
+      // Map results to fit Ticker interface
+      var result = resultsArray?.map((_ticker: ITickersResults) => {
+        return mapResponseToTicker(_ticker);
       });
 
       return { result: result, next_url: next_url, error: null };
-    } catch (error) {
-      const errorMessage = isAxiosError(error)
-        ? error.response?.data?.error
-        : error.message;
+    } catch (error: any) {
+      const errorMessage = getErrorMessage(error);
       alert(errorMessage);
       return { result: null, next_url: null, error: errorMessage };
     }
   },
+
+  /**
+   * Fetch details for the `ticker`
+   * @param {string} ticker search query
+   */
   async getTickerDetails(ticker: string) {
     try {
+      var historicalPrices: GraphPoint[] | null = null;
+      var percentageChange: number = 0;
+      var stats: Stats = null;
+
+      // Fetch ticker details and prices
       let [details, prices] = await Promise.all([
         getDetails(ticker),
         getPrices(ticker),
       ]);
 
-      const detailsJson = await details?.data.results;
-      var pricesArray: any[];
-      var historicalPrices: GraphPoint[] | null = null;
-      var percentageChange: number = 0;
-      var stats: Stats = null;
-      var pricesData = prices?.data;
-      const pricesArrayLength = pricesData?.resultsCount;
+      const detailsObject: ITickerDetailsResults | undefined = await details
+        ?.data?.results;
+      var pricesArray: IAggsResults[] = (await prices?.data?.results) ?? [];
+      const pricesArrayLength: number = prices?.data?.resultsCount ?? 0;
 
+      // If we have prices
       if (pricesArrayLength > 0) {
-        pricesArray = await pricesData?.results;
-        // get stats of previous day
-        let previousStats = pricesArray[pricesArrayLength - 1];
-        stats = {
-          open: previousStats.o,
-          close: previousStats.c,
-          high: previousStats.h,
-          low: previousStats.l,
-          volume: previousStats.v,
-          vwap: previousStats.vw,
-        };
-        // map array of stats to array of closing prices
-        historicalPrices = pricesArray.map((stats: any) => {
-          let date = formatDateShort(new Date(stats.t));
-          let obj = { x: date, y: stats.c };
-          return obj;
-        });
+        // Get stats of previous day
+        let previousStats: IAggsResults = pricesArray[pricesArrayLength - 1];
+        let beforePreviousStats: IAggsResults =
+          pricesArray[pricesArrayLength - 2];
+        stats = mapResponseToStats(previousStats);
+
+        // Map array of stats to array of closing prices
+        historicalPrices = mapArrayToGraph(pricesArray);
+
+        // Get percentage change
         if (pricesArrayLength > 1)
           percentageChange = getPercentageChange(
-            historicalPrices[pricesArrayLength - 1].y,
-            historicalPrices[pricesArrayLength - 2].y
+            previousStats.c,
+            beforePreviousStats.c
           );
       }
-
-      const tickerDetails: TickerDetails | null = {
-        name: detailsJson.name,
-        ticker: ticker,
-        logo: detailsJson.branding?.icon_url ?? null,
-        stats: stats ?? null,
-        website: detailsJson.homepage_url ?? null,
-        industry: detailsJson.market ?? null,
-        description: detailsJson.description ?? null,
-        currency: detailsJson.currency_name ?? null,
-        historicalPrices: historicalPrices ?? null,
-        percentageChange: percentageChange ?? null,
-      };
+      // Map details response to TickerDetails
+      const tickerDetails: TickerDetails | null = mapResponseToDetails(
+        detailsObject,
+        ticker,
+        stats,
+        historicalPrices,
+        percentageChange
+      );
 
       return { result: tickerDetails, error: null };
-    } catch (error) {
-      const errorMessage = isAxiosError(error)
-        ? error.response?.data?.error
-        : error.message;
+    } catch (error: any) {
+      const errorMessage = getErrorMessage(error);
       alert(errorMessage);
       return { result: null, error: error };
     }
