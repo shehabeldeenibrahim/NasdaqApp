@@ -1,7 +1,12 @@
+import { APP_URL, HOSTNAME, TICKERS_URL } from "./constants";
+
+const selectors = {
+  listItem: '[data-testid="RNE__LISTITEM__padView"]',
+  listLoader: '[data-testid="RNE__Skeleton"]',
+};
 describe("TickersList Screen", () => {
   it("Verify that loading show before response received", () => {
-    // Create a promise that will be manually
-    // resolved
+    // Create a promise that will be manually resolved
     let resolveRequest: any;
     const trigger = new Promise((resolve) => {
       resolveRequest = resolve;
@@ -11,8 +16,8 @@ describe("TickersList Screen", () => {
     cy.intercept(
       {
         method: "GET",
-        hostname: "api.polygon.io",
-        pathname: "/v3/reference/tickers",
+        hostname: HOSTNAME,
+        pathname: TICKERS_URL,
       },
       (request: any) => {
         return trigger.then(() => {
@@ -22,11 +27,11 @@ describe("TickersList Screen", () => {
           });
         });
       }
-    );
+    ).as("allTickersRequest");
 
     // Open app
-    cy.visit("http://localhost:19006/");
-    cy.get('[data-testid="RNE__Skeleton"]')
+    cy.visit(APP_URL);
+    cy.get(selectors.listLoader)
       .should("be.visible")
       .then(() => {
         // Asserted that loader is shown
@@ -35,6 +40,6 @@ describe("TickersList Screen", () => {
       });
 
     // Verify ticker list is rendered
-    cy.get('[data-testid="RNE__LISTITEM__padView"]').should("have.length", 20);
+    cy.get(selectors.listItem).should("have.length", 20);
   });
 });
