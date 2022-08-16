@@ -63,6 +63,9 @@ const InfoCard = ({ data }: IProps) => {
     <Loader />
   );
 };
+export default InfoCard;
+
+// Styles
 const styles = StyleSheet.create({
   card: {
     borderRadius: 8,
@@ -76,7 +79,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     padding: "2%",
   },
-  logo: { borderColor: "white", borderWidth: 2 },
+  logo: { borderColor: colors.white, borderWidth: 2 },
   data: {
     marginLeft: "4%",
     flex: 0.8,
@@ -85,9 +88,9 @@ const styles = StyleSheet.create({
   prices: {
     flexDirection: "row",
   },
-  closePrice: { color: "white" },
-  title: { color: "white", fontWeight: "bold" },
-  currency: { color: "white", fontSize: 16, alignSelf: "flex-end" },
+  closePrice: { color: colors.white },
+  title: { color: colors.white, fontWeight: "bold" },
+  currency: { color: colors.white, fontSize: 16, alignSelf: "flex-end" },
   subtitle: {
     color: colors.gray,
   },
@@ -96,9 +99,7 @@ const styles = StyleSheet.create({
     height: 65,
     width: 65,
     borderWidth: 2,
-    borderColor: "white",
+    borderColor: colors.white,
     borderRadius: 75,
   },
 });
-
-export default InfoCard;

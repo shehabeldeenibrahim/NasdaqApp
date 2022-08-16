@@ -4,6 +4,14 @@ import { FlatList, StyleSheet, View } from "react-native";
 import { Loading, Ticker } from "../../../models";
 import RetrieveListLoader from "./RetrieveListLoader";
 import StockListItem from "./StockListItem";
+/**
+ * Infinite List of stock items
+ * @param {Ticker[]} data list of stock tickers
+ * @param {boolean} retrieveLoad global retieve load state
+ * @param {function} retrieveMore fn to fetch more data
+ * @param {function} test flag used in unit tests
+ */
+
 interface IProps {
   data: Ticker[];
   retrieveMore: () => {};
@@ -63,7 +71,10 @@ const StockList = ({
     </>
   );
 };
+
+export default StockList;
+
+// Styles
 const styles = StyleSheet.create({
   flatlist: { marginBottom: "25%" },
 });
-export default StockList;

@@ -1,18 +1,17 @@
 import React from "react";
-// import { Tab, TabView } from "@rneui/themed";
 import { colors } from "../../../../Theme/colors";
 import InfoTab from "./InfoTab";
 import StatsTab from "./StatsTab";
-import {
-  TabView,
-  SceneMap,
-  TabBar,
-  SceneRendererProps,
-} from "react-native-tab-view";
+import { TabView, TabBar, SceneRendererProps } from "react-native-tab-view";
 import { getTabBarIcon } from "../../../../utils";
 import { TickerDetails } from "../../../../models";
 import { SCREEN_HEIGHT, SCREEN_WIDTH } from "../../../../Theme/dimensions";
+import { StyleSheet } from "react-native";
 
+/**
+ * Tabs component for stats and info
+ * @param {data} TickerDetails ticker details to be displayed
+ */
 interface IProps {
   data: TickerDetails;
 }
@@ -22,10 +21,7 @@ type RenderSceneProps = SceneRendererProps & {
     title: string;
   };
 };
-/**
- * Info header card showing ticker details
- * @param {data} TickerDetails ticker details to be displayed
- */
+
 const TabsCard = ({ data }: IProps) => {
   const [index, setIndex] = React.useState(0);
 
@@ -58,13 +54,7 @@ const TabsCard = ({ data }: IProps) => {
           <TabBar
             {...props}
             pressColor="transparent"
-            indicatorStyle={{
-              backgroundColor: colors.primary,
-              height: 2,
-              width: SCREEN_WIDTH / 4,
-              left: SCREEN_WIDTH / 8,
-              alignItems: "center",
-            }}
+            indicatorStyle={styles.indicator}
             style={{ backgroundColor: "transparent" }}
             labelStyle={{ color: colors.primary }}
             renderIcon={getTabBarIcon}
@@ -75,3 +65,14 @@ const TabsCard = ({ data }: IProps) => {
   ) : null;
 };
 export default TabsCard;
+
+// Styles
+const styles = StyleSheet.create({
+  indicator: {
+    backgroundColor: colors.primary,
+    height: 2,
+    width: SCREEN_WIDTH / 4,
+    left: SCREEN_WIDTH / 8,
+    alignItems: "center",
+  },
+});

@@ -2,7 +2,10 @@ import React from "react";
 import { Skeleton } from "@rneui/themed";
 import { StyleSheet, View } from "react-native";
 import { SCREEN_HEIGHT, SCREEN_WIDTH } from "../../Theme/dimensions";
-
+/**
+ * Loader Shimmer effect for details page
+ * @param none
+ */
 const DetailsShimmer = () => {
   return (
     <View style={styles.container}>
@@ -29,6 +32,8 @@ const DetailsShimmer = () => {
 };
 
 export default DetailsShimmer;
+
+// Styles
 const styles = StyleSheet.create({
   skeleton: { borderRadius: 8, margin: "2%" },
   container: { alignItems: "center" },

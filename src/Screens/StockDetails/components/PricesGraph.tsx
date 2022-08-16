@@ -10,11 +10,12 @@ import { GraphPoint } from "../../../models";
 import { colors } from "../../../Theme/colors";
 import NoData from "../../../Components/NoData";
 import { SCREEN_WIDTH } from "../../../Theme/dimensions";
+
 /**
  * Graph showing stock prices for the last 30 days
  * @param {number[]} data stock data for the last 30 days
+ * @param {number} percentageChange change between last 2 days
  */
-
 interface IProps {
   data: GraphPoint[] | null;
   percentageChange: number;
@@ -61,6 +62,7 @@ const PricesGraph = ({ data, percentageChange }: IProps) => {
     <NoData />
   );
 };
+export default PricesGraph;
 const styles = {
   yAxis: {
     axis: { stroke: "transparent" },
@@ -69,4 +71,3 @@ const styles = {
   },
   xAxis: { grid: { stroke: "rgba(128, 162, 191, 0.3)" } },
 };
-export default PricesGraph;

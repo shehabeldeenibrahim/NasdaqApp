@@ -1,10 +1,11 @@
 import { SearchBar } from "@rneui/base";
 import React, { useEffect, useState } from "react";
-import { View } from "react-native";
+import { StyleSheet, View } from "react-native";
 import StockListLoader from "./components/StockListLoader";
 import StockList from "./components/StockList";
 import useDebounce from "../../hooks/useDebounce";
 import { useActions, useAppState } from "../../Overmind/helper";
+import { colors } from "../../Theme/colors";
 
 interface Props {
   navigation: any;
@@ -33,7 +34,6 @@ const ExploreScreen: React.FC<Props> = ({ navigation }) => {
       setIsSearch(true);
       searchTickers(debouncedSearch);
     } else {
-      // TODO: show first list again
       setIsSearch(false);
     }
   }, [debouncedSearch]);
@@ -46,16 +46,9 @@ const ExploreScreen: React.FC<Props> = ({ navigation }) => {
         showLoading={search_load}
         placeholder="Search Ticker..."
         platform="ios"
-        containerStyle={{
-          backgroundColor: "transparent",
-          shadowColor: "#470000",
-          shadowOffset: { width: 0, height: 1 },
-          shadowOpacity: 0.2,
-          elevation: 3,
-          paddingHorizontal: "1.5%",
-        }}
-        inputContainerStyle={{ backgroundColor: "white" }}
-        leftIconContainerStyle={{ backgroundColor: "white" }}
+        containerStyle={styles.searchBar}
+        inputContainerStyle={{ backgroundColor: colors.white }}
+        leftIconContainerStyle={{ backgroundColor: colors.white }}
         onChangeText={handleChange}
         value={query}
       />
@@ -71,3 +64,15 @@ const ExploreScreen: React.FC<Props> = ({ navigation }) => {
   );
 };
 export default ExploreScreen;
+
+// Styles
+const styles = StyleSheet.create({
+  searchBar: {
+    backgroundColor: "transparent",
+    shadowColor: "#470000",
+    shadowOffset: { width: 0, height: 1 },
+    shadowOpacity: 0.2,
+    elevation: 3,
+    paddingHorizontal: "1.5%",
+  },
+});

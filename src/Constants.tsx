@@ -1,4 +1,4 @@
-export const statsDefinitions = {
+export const statsDefinitions: any = {
   open: "The price at which a security first trades upon the opening of an exchange on a trading day",
   close:
     "The last price at which a stock trades during a regular trading session",

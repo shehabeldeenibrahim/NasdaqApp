@@ -1,6 +1,10 @@
 import axios from "axios";
 import { APIKEY, BASE_URL } from "@env";
-
+/**
+ * Intercept axios requests and add
+ * api key as a param
+ * @param none
+ */
 const customAxios = axios.create({
   baseURL: BASE_URL,
 });

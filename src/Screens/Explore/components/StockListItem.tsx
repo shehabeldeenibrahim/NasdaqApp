@@ -68,6 +68,8 @@ const StockListItem = ({ ticker }: IProps) => {
   );
 };
 
+export default StockListItem;
+
 // Styles
 const styles = {
   container: {
@@ -81,4 +83,3 @@ const styles = {
   },
   title: { fontWeight: "bold" } as TextStyle,
 };
-export default StockListItem;

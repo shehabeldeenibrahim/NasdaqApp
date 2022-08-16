@@ -10,12 +10,8 @@ import { colors } from "../Theme/colors";
  * @param  none
  */
 export default function Navigation({}) {
-  const MyTheme = {
-    ...DefaultTheme,
-    colors: colors,
-  };
   return (
-    <NavigationContainer theme={MyTheme}>
+    <NavigationContainer>
       <RootNavigator />
     </NavigationContainer>
   );
@@ -29,9 +25,9 @@ function RootNavigator() {
       initialRouteName="Tickers"
       screenOptions={{
         headerStyle: { backgroundColor: colors.primary },
-        headerTitleStyle: { color: "white" },
+        headerTitleStyle: { color: colors.white },
         headerTitleAlign: "center",
-        headerTintColor: "white",
+        headerTintColor: colors.white,
         contentStyle: { borderRadius: 90 },
       }}
     >

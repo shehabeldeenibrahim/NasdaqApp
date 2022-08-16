@@ -7,10 +7,16 @@ import React from "react";
 import { colors } from "../../../../Theme/colors";
 import NoData from "../../../../Components/NoData";
 
+/**
+ * About stock tab
+ * @param {string} description stock description
+ * @param {string} website stock website
+ */
 interface IProps {
   description: string | null;
   website: string | null;
 }
+
 const InfoTab = ({ description, website }: IProps) => {
   const renderViewMore = (onPress: any) => {
     return (
@@ -48,7 +54,7 @@ const InfoTab = ({ description, website }: IProps) => {
         <Button
           title="Visit Website"
           buttonStyle={styles.button}
-          icon={{ name: "earth", type: "antdesign", color: "white" }}
+          icon={{ name: "earth", type: "antdesign", color: colors.white }}
           containerStyle={styles.buttonContainer}
           onPress={() => {
             Linking.openURL(website);

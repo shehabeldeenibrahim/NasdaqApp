@@ -4,6 +4,10 @@ import { View, StyleSheet } from "react-native";
 import { Stats } from "../../../../models";
 import NoData from "../../../../Components/NoData";
 import StatsItem from "./StatsItem";
+/**
+ * Statistics tab
+ * @param {Stats} stats {close, open, etc.}
+ */
 interface IProps {
   stats: Stats;
 }
@@ -34,6 +38,10 @@ const StatsTab = ({ stats }: IProps) => {
     </Card>
   );
 };
+
+export default StatsTab;
+
+// Styles
 const styles = StyleSheet.create({
   container: {
     display: "flex",
@@ -52,4 +60,3 @@ const styles = StyleSheet.create({
     elevation: 3,
   },
 });
-export default StatsTab;

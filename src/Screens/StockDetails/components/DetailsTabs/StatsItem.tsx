@@ -4,7 +4,12 @@ import React, { useState } from "react";
 import { View, StyleSheet } from "react-native";
 import { statsDefinitions } from "../../../../Constants";
 import { colors } from "../../../../Theme/colors";
-
+/**
+ * Metric item
+ * @param {string} title close, open, etc.
+ * @param {number} value metric value
+ * @param {string} currency metric currency
+ */
 interface IProps {
   title: string;
   value: number | null | undefined;
@@ -49,6 +54,8 @@ const StatsItem = ({ title, value, currency }: IProps) => {
   );
 };
 export default StatsItem;
+
+// Styles
 const styles = StyleSheet.create({
   item: {
     padding: "3%",
