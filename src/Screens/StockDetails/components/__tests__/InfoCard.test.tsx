@@ -1,6 +1,6 @@
 import React from "react";
 import { render, screen } from "@testing-library/react-native";
-import { TickerDetailsData } from "../../../../mocks/Tickers";
+import { TickerDetailsData } from "../../../../mocks/StockDetails";
 import InfoCard from "../InfoCard";
 import { APIKEY } from "../../../../Constants";
 

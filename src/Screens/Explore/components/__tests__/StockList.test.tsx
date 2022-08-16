@@ -1,7 +1,7 @@
 import React from "react";
 import { render, screen, fireEvent } from "@testing-library/react-native";
 import StockList from "../StockList";
-import { TickersData } from "../../../../mocks/Tickers";
+import { TickersData } from "../../../../mocks/StockDetails";
 import { Loading } from "../../../../models";
 
 const retrieveMore = jest.fn();

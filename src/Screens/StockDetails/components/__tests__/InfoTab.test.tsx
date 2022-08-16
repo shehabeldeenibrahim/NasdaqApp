@@ -1,7 +1,7 @@
 import React from "react";
 import { render, screen } from "@testing-library/react-native";
 import InfoTab from "../InfoTab";
-import { TickerDetailsData } from "../../../../mocks/Tickers";
+import { TickerDetailsData } from "../../../../mocks/StockDetails";
 
 // Mock Navigation
 jest.mock("@react-navigation/native", () => {

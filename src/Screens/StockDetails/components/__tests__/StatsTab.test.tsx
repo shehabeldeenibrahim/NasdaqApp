@@ -1,6 +1,6 @@
 import React from "react";
 import { render, screen } from "@testing-library/react-native";
-import { stats } from "../../../../mocks/Tickers";
+import { stats } from "../../../../mocks/StockDetails";
 import StatsTab from "../DetailsTabs/StatsTab";
 
 // Mock Navigation
