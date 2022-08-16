@@ -1,0 +1,61 @@
+{
+  "results": [
+    {
+      "ticker": "AAPL",
+      "name": "Apple Inc.",
+      "market": "stocks",
+      "locale": "us",
+      "primary_exchange": "XNAS",
+      "type": "CS",
+      "active": true,
+      "currency_name": "usd",
+      "cik": "0000320193",
+      "composite_figi": "BBG000B9XRY4",
+      "share_class_figi": "BBG001S5N8V8",
+      "last_updated_utc": "2022-08-15T00:00:00Z"
+    },
+    {
+      "ticker": "AAPB",
+      "name": "GraniteShares 1.75x Long AAPL Daily ETF",
+      "market": "stocks",
+      "locale": "us",
+      "primary_exchange": "XNAS",
+      "type": "ETF",
+      "active": true,
+      "currency_name": "usd",
+      "cik": "0001689873",
+      "composite_figi": "BBG0193F21N2",
+      "share_class_figi": "BBG0193F22H7",
+      "last_updated_utc": "2022-08-15T00:00:00Z"
+    },
+    {
+      "ticker": "AAPU",
+      "name": "Direxion Daily AAPL Bull 1.5X Shares",
+      "market": "stocks",
+      "locale": "us",
+      "primary_exchange": "XNAS",
+      "type": "ETF",
+      "active": true,
+      "currency_name": "usd",
+      "composite_figi": "BBG0193YBZ92",
+      "share_class_figi": "BBG0193YC043",
+      "last_updated_utc": "2022-08-15T00:00:00Z"
+    },
+    {
+      "ticker": "AAPD",
+      "name": "Direxion Daily AAPL Bear 1X Shares",
+      "market": "stocks",
+      "locale": "us",
+      "primary_exchange": "XNAS",
+      "type": "ETF",
+      "active": true,
+      "currency_name": "usd",
+      "composite_figi": "BBG0193YGJ57",
+      "share_class_figi": "BBG0193YGK09",
+      "last_updated_utc": "2022-08-15T00:00:00Z"
+    }
+  ],
+  "status": "OK",
+  "request_id": "237c24962ffa3084e2bf27dc0846fae7",
+  "count": 4
+}
