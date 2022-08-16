@@ -2,6 +2,7 @@ import React from "react";
 import { render, screen } from "@testing-library/react-native";
 import StatsTab from "../DetailsTabs/StatsTab";
 import { StatsData } from "../../../../mocks/Stats";
+import { expect } from "@jest/globals";
 
 // Mock Navigation
 jest.mock("@react-navigation/native", () => {

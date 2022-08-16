@@ -2,6 +2,7 @@ import React from "react";
 import { render, screen } from "@testing-library/react-native";
 import StockListItem from "../StockListItem";
 import { StockListData } from "../../../../mocks/StockList";
+import { expect } from "@jest/globals";
 
 // Mock Navigation
 jest.mock("@react-navigation/native", () => {

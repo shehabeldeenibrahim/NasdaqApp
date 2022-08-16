@@ -3,6 +3,7 @@ import { render, screen } from "@testing-library/react-native";
 import { StockDetailsData } from "../../../../mocks/StockDetails";
 import InfoCard from "../InfoCard";
 import { APIKEY } from "@env";
+import { expect } from "@jest/globals";
 
 // Mock Navigation
 jest.mock("@react-navigation/native", () => {

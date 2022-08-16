@@ -3,6 +3,7 @@ import { render, screen, fireEvent } from "@testing-library/react-native";
 import StockList from "../StockList";
 import { Loading } from "../../../../models";
 import { StockListData } from "../../../../mocks/StockList";
+import { expect } from "@jest/globals";
 
 const retrieveMore = jest.fn();
 // Mock Navigation
