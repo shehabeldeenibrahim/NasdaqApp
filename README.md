@@ -20,13 +20,13 @@ A cross-platform stock market mobile app built using React-Native (Expo) that di
     ├── assets                    # Static Assets
     ├── src                       # Source Code
     │   ├── Components            # Shared Components
-    		└── __tests__         # Unit tests for each component
+    	    └── __tests__     # Unit tests for each component
         ├── Api            	      # Api functions
         ├── Overmind              # Overmind states
-        ├── Screens            	  # App main containers
-        ├── Mocks            	  # Mock data
-        ├── Hooks            	  # Custom hooks
-        ├── Theme            	  # Theme config
+        ├── Screens               # App main containers
+        ├── Mocks                 # Mock data
+        ├── Hooks                 # Custom hooks
+        ├── Theme                 # Theme config
         ├── Navigation            # Navigation files
         ├── types                 # Interfaces and types
     │   └── cypress               # E2E tests
