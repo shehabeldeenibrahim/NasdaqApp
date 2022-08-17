@@ -10,8 +10,12 @@ import { colors } from "../Theme/colors";
  * @param  none
  */
 export default function Navigation({}) {
+  const MyTheme = {
+    ...DefaultTheme,
+    colors: colors,
+  };
   return (
-    <NavigationContainer>
+    <NavigationContainer theme={MyTheme}>
       <RootNavigator />
     </NavigationContainer>
   );
@@ -28,7 +32,6 @@ function RootNavigator() {
         headerTitleStyle: { color: colors.white },
         headerTitleAlign: "center",
         headerTintColor: colors.white,
-        contentStyle: { borderRadius: 90 },
       }}
     >
       <Stack.Screen
