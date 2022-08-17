@@ -33,7 +33,7 @@ const InfoTab = ({ description, website }: IProps) => {
     );
   };
   return (
-    <ScrollView style={styles.container}>
+    <ScrollView nestedScrollEnabled style={styles.container}>
       {description ? (
         <>
           <Text h4 h4Style={styles.title}>
@@ -68,7 +68,7 @@ export default InfoTab;
 const styles = StyleSheet.create({
   container: {
     paddingHorizontal: "5%",
-    marginBottom: "5%",
+    marginBottom: "7%",
   },
   description: {
     fontSize: 15,
