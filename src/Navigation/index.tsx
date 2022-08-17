@@ -1,9 +1,9 @@
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import React from "react";
 import { DefaultTheme, NavigationContainer } from "@react-navigation/native";
-import TickersScreen from "../Screens/TickersScreen";
-import TickerDetailsScreen from "../Screens/TickerDetailsScreen";
-import { colors } from "../theme";
+import ExploreScreen from "../Screens/Explore/Explore";
+import TickerDetailsScreen from "../Screens/StockDetails/StockDetails";
+import { colors } from "../Theme/colors";
 
 /**
  * Navigation configuration component
@@ -29,15 +29,14 @@ function RootNavigator() {
       initialRouteName="Tickers"
       screenOptions={{
         headerStyle: { backgroundColor: colors.primary },
-        headerTitleStyle: { color: "white" },
+        headerTitleStyle: { color: colors.white },
         headerTitleAlign: "center",
-        headerTintColor: "white",
-        contentStyle: { borderRadius: 90 },
+        headerTintColor: colors.white,
       }}
     >
       <Stack.Screen
         name="Tickers"
-        component={TickersScreen}
+        component={ExploreScreen}
         options={{ title: "Explore" }}
       />
       <Stack.Screen

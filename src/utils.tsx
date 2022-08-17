@@ -4,8 +4,18 @@ import { faBitcoinSign } from "@fortawesome/free-solid-svg-icons/faBitcoinSign";
 import { faO } from "@fortawesome/free-solid-svg-icons/faO";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { Icon } from "@rneui/themed";
-import axios from "./axios";
-import { PRICES_URL, TICKERS_URL } from "./Constants";
+import axios, { isAxiosError } from "./api";
+import { PRICES_URL, TICKERS_URL } from "@env";
+import { AxiosError } from "axios";
+import {
+  IAggs,
+  IAggsResults,
+  ITickerDetails,
+  ITickerDetailsResults,
+  ITickersResults,
+  PolygonError,
+} from "./types/responses";
+import { GraphPoint, Stats, Ticker } from "./models";
 
 export const getInitials = (name: string) => {
   if (!name?.length) return "";
@@ -75,7 +85,7 @@ export const getTabBarIcon = (props: any) => {
 };
 
 export const getDetails = async (ticker: string) => {
-  const response = await axios(`${TICKERS_URL}/${ticker}`);
+  const response = await axios.get<ITickerDetails>(`${TICKERS_URL}/${ticker}`);
   return response;
 };
 export const getPrices = async (ticker: string) => {
@@ -83,7 +93,7 @@ export const getPrices = async (ticker: string) => {
   const endDate: string = formatDate(todayDate);
   const startDate: string = formatDate(subtractMonths(1));
   const url = `${PRICES_URL}/${ticker}/range/1/day/${startDate}/${endDate}`;
-  const response = await axios(url);
+  const response = await axios.get<IAggs>(url);
   return response;
 };
 export const formatDate = (date: Date) => {
@@ -115,4 +125,63 @@ export const formatDateShort = (date: Date) => {
 const subtractMonths = (numOfMonths: number, date = new Date()) => {
   date.setMonth(date.getMonth() - numOfMonths);
   return date;
+};
+
+export const getErrorMessage = (error: AxiosError | Error) => {
+  let errorMessage;
+  if (isAxiosError(error)) {
+    errorMessage = (error as AxiosError<PolygonError>).response?.data?.error;
+  } else {
+    errorMessage = (error as Error).message;
+  }
+  return errorMessage;
+};
+
+export const mapResponseToTicker = (_ticker: ITickersResults) => {
+  const ticker: Ticker = {
+    name: _ticker.name,
+    ticker: _ticker.ticker,
+    market: _ticker.market,
+  };
+  return ticker;
+};
+export const mapResponseToStats = (previousStats: IAggsResults) => {
+  const ticker: Stats = {
+    open: previousStats.o,
+    close: previousStats.c,
+    high: previousStats.h,
+    low: previousStats.l,
+    volume: previousStats.v,
+    vwap: previousStats.vw,
+  };
+  return ticker;
+};
+export const mapArrayToGraph = (pricesArray: IAggsResults[]) => {
+  // Map array of stats to array of closing prices
+  return pricesArray.map((stats: any) => {
+    let date = formatDateShort(new Date(stats.t));
+    let obj = { x: date, y: stats.c };
+    return obj;
+  });
+};
+export const mapResponseToDetails = (
+  detailsObject: ITickerDetailsResults | undefined,
+  ticker: string,
+  stats: Stats,
+  historicalPrices: GraphPoint[] | null,
+  percentageChange: number
+) => {
+  if (!detailsObject) return null;
+  return {
+    name: detailsObject.name,
+    ticker: ticker,
+    logo: detailsObject.branding?.icon_url ?? null,
+    stats: stats ?? null,
+    website: detailsObject.homepage_url ?? null,
+    industry: detailsObject.market ?? null,
+    description: detailsObject.description ?? null,
+    currency: detailsObject.currency_name ?? null,
+    historicalPrices: historicalPrices ?? null,
+    percentageChange: percentageChange ?? null,
+  };
 };

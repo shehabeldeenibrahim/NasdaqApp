@@ -1,7 +1,4 @@
-export const APIKEY = "LRV6zvCHHUiF6Z7cDwrxgzpGnwux8ptp";
-export const TICKERS_URL = "/v3/reference/tickers";
-export const PRICES_URL = "/v2/aggs/ticker";
-export const statsDefinitions = {
+export const statsDefinitions: any = {
   open: "The price at which a security first trades upon the opening of an exchange on a trading day",
   close:
     "The last price at which a stock trades during a regular trading session",

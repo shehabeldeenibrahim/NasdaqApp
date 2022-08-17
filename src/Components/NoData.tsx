@@ -1,11 +1,10 @@
 // Imports: Dependencies
 import { Text } from "@rneui/themed";
 import React from "react";
-import { View, Image, StyleSheet, Dimensions } from "react-native";
-import { colors } from "../theme";
+import { View, Image, StyleSheet } from "react-native";
+import { colors } from "../Theme/colors";
+import { SCREEN_HEIGHT } from "../Theme/dimensions";
 
-// Screen Dimensions
-const { height } = Dimensions.get("window");
 interface IProps {
   center?: boolean;
 }
@@ -18,7 +17,7 @@ const NoData = ({ center }: IProps) => {
     <View
       style={{
         ...styles.container,
-        paddingVertical: center ? height / 5 : height / 12,
+        paddingVertical: center ? SCREEN_HEIGHT / 5 : SCREEN_HEIGHT / 12,
       }}
     >
       <Image

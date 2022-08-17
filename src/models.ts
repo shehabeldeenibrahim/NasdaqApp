@@ -5,12 +5,12 @@ export interface Ticker {
   market: Market;
 }
 export type Stats = {
-  open: number | null;
-  close: number | null;
-  high: number | null;
-  low: number | null;
-  volume: number | null;
-  vwap: number | null;
+  open?: number;
+  close?: number;
+  high?: number;
+  low?: number;
+  volume?: number;
+  vwap?: number;
 } | null;
 export interface TickerDetails {
   name: string;
@@ -31,4 +31,11 @@ export type RootStackParamList = {
 export interface GraphPoint {
   x: string;
   y: number;
+}
+export interface QueryParams {
+  search?: string;
+  active?: boolean;
+  sort?: string;
+  order?: string;
+  limit?: number;
 }
