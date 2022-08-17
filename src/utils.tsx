@@ -5,7 +5,6 @@ import { faO } from "@fortawesome/free-solid-svg-icons/faO";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { Icon } from "@rneui/themed";
 import axios, { isAxiosError } from "./api";
-import { PRICES_URL, TICKERS_URL } from "@env";
 import { AxiosError } from "axios";
 import {
   IAggs,
@@ -16,6 +15,7 @@ import {
   PolygonError,
 } from "./types/responses";
 import { GraphPoint, Stats, Ticker } from "./models";
+import { PRICES_URL, TICKERS_URL } from "./api/constants";
 
 export const getInitials = (name: string) => {
   if (!name?.length) return "";

@@ -1,4 +1,4 @@
-import { TICKERS_URL } from "@env";
+import { TICKERS_URL } from "../api/constants";
 import { Context } from "./helper";
 
 /**
