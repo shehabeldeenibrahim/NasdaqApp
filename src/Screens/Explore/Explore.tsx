@@ -1,6 +1,6 @@
 import { SearchBar } from "@rneui/base";
 import React, { useEffect, useState } from "react";
-import { StyleSheet, View } from "react-native";
+import { Platform, StyleSheet, View } from "react-native";
 import StockListLoader from "./components/StockListLoader";
 import StockList from "./components/StockList";
 import useDebounce from "../../hooks/useDebounce";
@@ -50,7 +50,11 @@ const ExploreScreen: React.FC<Props> = ({ navigation }) => {
           color: colors.primary,
         }}
         containerStyle={styles.searchBar}
-        inputContainerStyle={{ backgroundColor: colors.white }}
+        inputContainerStyle={
+          Platform.OS === "android"
+            ? styles.searchInputContainerAndroid
+            : styles.searchInputContaineriOS
+        }
         leftIconContainerStyle={{ backgroundColor: colors.white }}
         onChangeText={handleChange}
         value={query}
@@ -77,5 +81,15 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.2,
     elevation: 3,
     paddingHorizontal: "1.5%",
+  },
+  searchInputContainerAndroid: {
+    backgroundColor: colors.white,
+    shadowColor: "#470000",
+    shadowOffset: { width: 0, height: 1 },
+    shadowOpacity: 0.2,
+    elevation: 3,
+  },
+  searchInputContaineriOS: {
+    backgroundColor: colors.white,
   },
 });
