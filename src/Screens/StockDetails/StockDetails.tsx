@@ -21,7 +21,8 @@ const TickerDetailsScreen: React.FC<IProps> = (props) => {
   const { getTickerDetails } = useActions();
   const { ticker_details, details_load } = useAppState();
   const { ticker } = props.route.params;
-  const details: TickerDetails | null = ticker_details[ticker];
+  const tickerClean: string = ticker.replace(/[^a-zA-Z ]/g, "");
+  const details: TickerDetails | null = ticker_details[tickerClean];
   useEffect(() => {
     props.navigation.setOptions({
       title: ticker,

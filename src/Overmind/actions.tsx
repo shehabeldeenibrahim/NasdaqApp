@@ -89,14 +89,16 @@ export const getTickerDetails = async (
   { state, effects }: Context,
   ticker: string
 ) => {
+  // Some tickers have special character (ie: AAC.WS)
+  const tickerClean: string = ticker.replace(/[^a-zA-Z ]/g, "");
   // Return the cached state if available
-  if (ticker in state.ticker_details) return state.ticker_details[ticker];
-
+  if (tickerClean in state.ticker_details)
+    return state.ticker_details[tickerClean];
   state.details_load = true;
   const result = await effects.api.getTickerDetails(ticker);
   if (!result.error && result.result) {
     // Set states
-    state.ticker_details[ticker] = result.result;
+    state.ticker_details[tickerClean] = result.result;
   }
   state.details_load = false;
 };
