@@ -2,9 +2,8 @@
 
 A cross-platform stock market mobile app built using React-Native (Expo) that displays all stocks listed in Nasdaq exchange with their ticker, name, and details.
 
+
 <img align="center" src="./screenshots/nasdaq.gif?raw=true" width="200px" />
-<br>
-<br>
 
 # Features
 
