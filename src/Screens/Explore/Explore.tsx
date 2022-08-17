@@ -46,6 +46,9 @@ const ExploreScreen: React.FC<Props> = ({ navigation }) => {
         showLoading={search_load}
         placeholder="Search Ticker..."
         platform="ios"
+        loadingProps={{
+          color: colors.primary,
+        }}
         containerStyle={styles.searchBar}
         inputContainerStyle={{ backgroundColor: colors.white }}
         leftIconContainerStyle={{ backgroundColor: colors.white }}
