@@ -44,7 +44,7 @@ const ExploreScreen: React.FC<Props> = ({ navigation }) => {
     <View>
       <SearchBar
         showLoading={search_load}
-        placeholder="Search Ticker..."
+        placeholder="Search Stock..."
         platform="ios"
         loadingProps={{
           color: colors.primary,
